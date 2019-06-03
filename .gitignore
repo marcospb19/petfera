@@ -1,0 +1,6 @@
+# Objetos compilados
+*.o
+*.obj
+*.out
+
+# Nota: não ignorar arquivos .txt/.csv, pois eles vão ajudar no desenvolvimento
