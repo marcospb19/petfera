@@ -1,24 +1,33 @@
 #ifndef ANFIBIO_H
 #define ANFIBIO_H
 
+#include "animal.h"
 
-	class Anfibio : public Animal
-	{
-		Anfibio();
-		~Anfibio();
-	}
 
-	class AnfibioNativo
-	{
-		AnfibioNativo();
-		~AnfibioNativo();
-	}
+class Anfibio : public Animal
+{
+	int total_de_mudas;
+//	date ultima_muda;
+public:
+	Anfibio();
+	~Anfibio();
+};
 
-	class AnfibioExotico
-	{
-		AnfibioExotico();
-		~AnfibioExotico();
-	}
+
+class AnfibioNativo
+{
+public:
+	AnfibioNativo();
+	~AnfibioNativo();
+};
+
+
+class AnfibioExotico
+{
+public:
+	AnfibioExotico();
+	~AnfibioExotico();
+};
 
 
 #endif

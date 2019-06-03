@@ -1,24 +1,35 @@
 #ifndef MAMIFERO_H
 #define MAMIFERO_H
 
+#include <string>
+#include "animal.h"
+using namespace std;
 
-	class Mamifero : public Animal
-	{
-		Mamifero();
-		~Mamifero();
-	}
 
-	class MamiferoNativo
-	{
-		MamiferoNativo();
-		~MamiferoNativo();
-	}
+class Mamifero : public Animal
+{
+	string cor_pelo;
 
-	class MamiferoExotico
-	{
-		MamiferoExotico();
-		~MamiferoExotico();
-	}
+public:
+	Mamifero();
+	~Mamifero();
+};
+
+
+class MamiferoNativo
+{
+public:
+	MamiferoNativo();
+	~MamiferoNativo();
+};
+
+
+class MamiferoExotico
+{
+public:
+	MamiferoExotico();
+	~MamiferoExotico();
+};
 
 
 #endif
