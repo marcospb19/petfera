@@ -1,6 +1,14 @@
+# Programa final compilado
+petfera
+src/petfera
+
 # Objetos compilados
 *.o
 *.obj
 *.out
+
+# Logs do ninja
+src/.ninja_deps
+src/.ninja_log
 
 # Nota: não ignorar arquivos .txt/.csv, pois eles vão ajudar no desenvolvimento

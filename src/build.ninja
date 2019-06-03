@@ -1,0 +1,15 @@
+cc = g++
+flags = -Wall -Wextra -Werror -pedantic -std=c++11
+
+
+rule link
+  command = $cc $flags -o $out $in
+
+build petfera: link petfera.o
+
+rule compile
+  command = $cc $flags -c $in -o $out
+
+build petfera.o: compile petfera.cpp
+
+# Para clean use "ninja -t clean"
