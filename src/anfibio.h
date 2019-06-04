@@ -2,13 +2,14 @@
 #define ANFIBIO_H
 
 #include "animal.h"
+#include "date.h"
 
 
 class Anfibio : public Animal
 {
 protected:
 	int total_de_mudas;
-//	date ultima_muda;
+	Date ultima_muda;
 
 public:
 	Anfibio();
