@@ -6,6 +6,7 @@
 
 class Ave : public Animal
 {
+protected:
 	double tamanho_do_bico_cm;
 	double envergadura_das_asas;
 

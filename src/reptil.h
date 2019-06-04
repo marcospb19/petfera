@@ -8,6 +8,7 @@ using namespace std;
 
 class Reptil : public Animal
 {
+protected:
 	bool venenoso;
 	string tipo_veneno;
 

@@ -9,6 +9,7 @@ using namespace std;
 
 class Animal
 {
+protected:
 	char sexo;
 	int id;
 	double tamanho;
@@ -29,6 +30,7 @@ public:
 
 class AnimalNativo
 {
+protected:
 	string uf_origem;
 	string autorizacao;
 
@@ -40,6 +42,7 @@ public:
 
 class AnimalExotico
 {
+protected:
 	string pais_origem;
 
 public:
@@ -50,6 +53,7 @@ public:
 
 class AnimalSilvestre
 {
+protected:
 	string autorizacao_ibama;
 
 public:

@@ -8,6 +8,7 @@ using namespace std;
 
 class Mamifero : public Animal
 {
+protected:
 	string cor_pelo;
 
 public:

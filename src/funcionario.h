@@ -7,6 +7,7 @@ using namespace std;
 
 class Funcionario
 {
+protected:
 	char fator_rh;
 	short tipo_sanguineo;
 	short idade;

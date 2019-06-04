@@ -6,8 +6,10 @@
 
 class Anfibio : public Animal
 {
+protected:
 	int total_de_mudas;
 //	date ultima_muda;
+
 public:
 	Anfibio();
 	~Anfibio();
