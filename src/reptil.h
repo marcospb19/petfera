@@ -6,7 +6,7 @@
 using namespace std;
 
 
-class Reptil : public Animal
+class Reptil : protected Animal
 {
 protected:
 	bool venenoso;
@@ -18,7 +18,7 @@ public:
 };
 
 
-class ReptilNativo
+class ReptilNativo : public Reptil, AnimalNativo
 {
 public:
 	ReptilNativo();
@@ -26,7 +26,7 @@ public:
 };
 
 
-class ReptilExotico
+class ReptilExotico : public Reptil, AnimalExotico
 {
 public:
 	ReptilExotico();

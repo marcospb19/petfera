@@ -28,7 +28,18 @@ public:
 };
 
 
-class AnimalNativo
+class AnimalSilvestre
+{
+protected:
+	string autorizacao_ibama;
+
+public:
+	AnimalSilvestre();
+	~AnimalSilvestre();
+};
+
+
+class AnimalNativo : protected AnimalSilvestre
 {
 protected:
 	string uf_origem;
@@ -40,7 +51,7 @@ public:
 };
 
 
-class AnimalExotico
+class AnimalExotico : protected AnimalSilvestre
 {
 protected:
 	string pais_origem;
@@ -48,17 +59,6 @@ protected:
 public:
 	AnimalExotico();
 	~AnimalExotico();
-};
-
-
-class AnimalSilvestre
-{
-protected:
-	string autorizacao_ibama;
-
-public:
-	AnimalSilvestre();
-	~AnimalSilvestre();
 };
 
 

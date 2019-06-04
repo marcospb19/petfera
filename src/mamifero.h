@@ -6,7 +6,7 @@
 using namespace std;
 
 
-class Mamifero : public Animal
+class Mamifero : protected Animal
 {
 protected:
 	string cor_pelo;
@@ -17,7 +17,7 @@ public:
 };
 
 
-class MamiferoNativo
+class MamiferoNativo : public Mamifero, AnimalNativo
 {
 public:
 	MamiferoNativo();
@@ -25,7 +25,7 @@ public:
 };
 
 
-class MamiferoExotico
+class MamiferoExotico : public Mamifero, AnimalExotico
 {
 public:
 	MamiferoExotico();

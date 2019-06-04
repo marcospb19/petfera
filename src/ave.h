@@ -4,7 +4,7 @@
 #include "animal.h"
 
 
-class Ave : public Animal
+class Ave : protected Animal
 {
 protected:
 	double tamanho_do_bico_cm;
@@ -16,7 +16,7 @@ public:
 };
 
 
-class AveNativo
+class AveNativo : public Ave, AnimalNativo
 {
 public:
 	AveNativo();
@@ -24,7 +24,7 @@ public:
 };
 
 
-class AveExotico
+class AveExotico : public Ave, AnimalExotico
 {
 public:
 	AveExotico();

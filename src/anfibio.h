@@ -5,7 +5,7 @@
 #include "date.h"
 
 
-class Anfibio : public Animal
+class Anfibio : protected Animal
 {
 protected:
 	int total_de_mudas;
@@ -17,7 +17,7 @@ public:
 };
 
 
-class AnfibioNativo
+class AnfibioNativo : public Anfibio, AnimalNativo
 {
 public:
 	AnfibioNativo();
@@ -25,7 +25,7 @@ public:
 };
 
 
-class AnfibioExotico
+class AnfibioExotico : public Anfibio, AnimalExotico
 {
 public:
 	AnfibioExotico();
