@@ -13,6 +13,9 @@ class Tratador : public Funcionario
 public:
 	Tratador();
 	~Tratador();
+
+	int get_nivel_de_seguranca();
+	void set_nivel_de_seguranca(int _nivel_de_seguranca);
 };
 
 

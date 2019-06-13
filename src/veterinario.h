@@ -13,6 +13,9 @@ class Veterinario : public Funcionario
 public:
 	Veterinario();
 	~Veterinario();
+
+	string get_crmv();
+	void set_crmv(string _crmv);
 };
 
 
