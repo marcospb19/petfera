@@ -2,7 +2,16 @@
 #define MENU_H
 
 
-void menu();
+class Menu
+{
+public:
+	bool continuar = true;
+
+	void rodar_menu();
+
+	Menu();
+	~Menu();
+};
 
 
 #endif

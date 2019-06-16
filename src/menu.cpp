@@ -2,17 +2,25 @@
 #include "menu.h"
 #include "funcionario.h"
 
+Menu::Menu(){
 
-void menu(){
+}
+Menu::~Menu(){
+
+}
+
+void Menu::rodar_menu(){
 	short op = -1;
 	while (op != 0){
-		cout << "\nEscolha a opção desejada:" << endl;
-		cout << "1 - Inserir funcionário" << endl;
-		cout << "0 - Sair" << endl;
+		cout << "\nEscolha a opção desejada:\n"
+		     << "1 - Inserir funcionário\n"
+		     << "2 - Listar funcionários\n"
+		     << "0 - Sair\n";
+
 		cin >> op;
-		switch(op){
+		switch (op){
 			case 0:
-				cout << "\nAté logo!" << endl;
+				this->continuar = false;
 				break;
 			case 1:
 				inserir_funcionario();
@@ -21,7 +29,7 @@ void menu(){
 				listar_funcionarios();
 				break;
 			default:
-				cout << "\nEscolha uma opção válida" << endl;
+				cout << "Escolha uma opção válida\n";
 				break;
 		}
 	}

@@ -8,7 +8,6 @@ using namespace std;
 Funcionario::Funcionario(){
 
 }
-
 Funcionario::~Funcionario(){
 
 }
@@ -19,20 +18,25 @@ void listar_funcionarios(){
 
 
 void inserir_funcionario(){
-	string funcao;
+	short op;
 	while (true){
-		cout << "\nInsira a função do funcionário: " << endl;
-		cin >> funcao;
-		if (funcao == "Veterinário"){
+		cout << "\nInsira a função do funcionário:\n"
+		     << "1 - Veterinário\n"
+		     << "2 - Tratador\n"
+		     << "0 - Sair\n\n\n";
+
+		cin >> op;
+
+		if (op == 1){
 			inserir_veterinario();
 			break;
 		}
-		else if (funcao == "Tratador"){
+		else if (op == 2){
 			inserir_tratador();
 			break;
 		}
 		else{
-			cout << "\nInsira um valor válido: Veterinário ou Tratador" << endl;
+			cerr << "\nInsira um valor válido [0-2]\n";
 		}
 	}
 }
@@ -41,7 +45,7 @@ void inserir_funcionario(){
 
 // Fator_RH
 char Funcionario::get_fator_rh(){
-	return(fator_rh);
+	return fator_rh;
 }
 void Funcionario::set_fator_rh(char _fator_rh){
 	fator_rh = _fator_rh;
@@ -49,7 +53,7 @@ void Funcionario::set_fator_rh(char _fator_rh){
 
 // Tipo sanguíneo
 short Funcionario::get_tipo_sanguineo(){
-	return(tipo_sanguineo);
+	return tipo_sanguineo;
 }
 void Funcionario::set_tipo_sanguineo(short _tipo_sanguineo){
 	tipo_sanguineo = _tipo_sanguineo;
@@ -57,7 +61,7 @@ void Funcionario::set_tipo_sanguineo(short _tipo_sanguineo){
 
 // Idade
 short Funcionario::get_idade(){
-	return(idade);
+	return idade;
 }
 void Funcionario::set_idade(short _idade){
 	idade = _idade;
@@ -65,7 +69,7 @@ void Funcionario::set_idade(short _idade){
 
 // Id
 int Funcionario::get_id(){
-	return(id);
+	return id;
 }
 void Funcionario::set_id(int _id){
 	id = _id;
@@ -73,7 +77,7 @@ void Funcionario::set_id(int _id){
 
 // Nome
 string Funcionario::get_nome(){
-	return(nome);
+	return nome;
 }
 void Funcionario::set_nome(string _nome){
 	nome = _nome;
@@ -81,7 +85,7 @@ void Funcionario::set_nome(string _nome){
 
 // Cpf
 string Funcionario::get_cpf(){
-	return(cpf);
+	return cpf;
 }
 void Funcionario::set_cpf(string _cpf){
 	cpf = _cpf;
@@ -89,7 +93,7 @@ void Funcionario::set_cpf(string _cpf){
 
 // Especialidade
 string Funcionario::get_especialidade(){
-	return(especialidade);
+	return especialidade;
 }
 void Funcionario::set_especialidade(string _especialidade){
 	especialidade = _especialidade;

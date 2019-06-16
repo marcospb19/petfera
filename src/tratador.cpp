@@ -7,45 +7,49 @@ using namespace std;
 Tratador::Tratador(){
 
 }
-
 Tratador::~Tratador(){
 
 }
 
 void inserir_tratador(){
-	Tratador trat;
+	Tratador tr;
 
-	trat.set_id(2);
-	trat.set_nome("João Alberto");
-	trat.set_cpf("007.404.200-98");
-	trat.set_idade(45);
-	trat.set_tipo_sanguineo(0);
-	trat.set_fator_rh('-');
-	trat.set_especialidade("Répteis e Aves");
-	trat.set_nivel_de_seguranca(1);
+	tr.set_id(2);
+	tr.set_nome("João Alberto");
+	tr.set_cpf("007.404.200-98");
+	tr.set_idade(45);
+	tr.set_tipo_sanguineo(0);
+	tr.set_fator_rh('-');
+	tr.set_especialidade("Répteis e Aves");
+	tr.set_nivel_de_seguranca(1);
 
-	ofstream saida;
-	saida.open("funcionarios.txt", ios::out | ios::app);
+	ofstream f;
+	f.open("funcionarios.txt", ios::out | ios::app);
 
-	if (saida.is_open())
+	if (!f.is_open())
 	{
-		saida << "\n" << trat.get_id() << " | Tratador | " << trat.get_nome() << " | "
-		<< trat.get_cpf() << " | " << trat.get_idade() << " | "
-		<< trat.get_tipo_sanguineo() << " | " << trat.get_fator_rh() << " | "
-		<< trat.get_especialidade() << " | | " << trat.get_nivel_de_seguranca() << " | ";
-		saida.close();
+		cerr << "\nErro na abertura do arquivo\n";
+		return;
 	}
-	else
-	{
-		cerr << "\nErro na abertura do arquivo" << endl;
-	}
+
+	f << tr.get_id()             << " | "
+	  << "T"                     << " | "
+	  << tr.get_nome()           << " | "
+	  << tr.get_cpf()            << " | "
+	  << tr.get_idade()          << " | "
+	  << tr.get_tipo_sanguineo() << " | "
+	  << tr.get_fator_rh()       << " | "
+	  << tr.get_especialidade()  << " | "
+// /* <<     */                  << " | " Pular atributo, a discutir
+	  << tr.get_nivel_de_seguranca() << " |\n";
+	f.close();
 }
 
 // Setters e Getters:
 
 // Nível_De_Segurança
 int Tratador::get_nivel_de_seguranca(){
-	return(nivel_de_seguranca);
+	return nivel_de_seguranca;
 }
 void Tratador::set_nivel_de_seguranca(int _nivel_de_seguranca){
 	nivel_de_seguranca = _nivel_de_seguranca;

@@ -6,6 +6,10 @@ using namespace std;
 int main(int argc, char* argv[])
 {
 	cout << "PetFera\n";
-	menu();
+
+	Menu menu;
+	while (menu.continuar)
+		menu.rodar_menu();
+
 	return 0;
 }
