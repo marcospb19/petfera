@@ -43,5 +43,9 @@ public:
 	void set_especialidade(string _especialidade);
 };
 
+void inserir_funcionario();
+
+void listar_funcionarios();
+
 
 #endif

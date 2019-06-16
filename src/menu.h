@@ -8,10 +8,8 @@
 #include "tratador.h"
 using namespace std;
 
+
 void menu();
-void inserir_funcionario();
-void inserir_veterinario();
-void inserir_tratador();
-void listar_funcionarios();
+
 
 #endif

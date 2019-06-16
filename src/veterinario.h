@@ -18,5 +18,7 @@ public:
 	void set_crmv(string _crmv);
 };
 
+void inserir_veterinario();
+
 
 #endif

@@ -18,5 +18,7 @@ public:
 	void set_nivel_de_seguranca(int _nivel_de_seguranca);
 };
 
+void inserir_tratador();
+
 
 #endif
