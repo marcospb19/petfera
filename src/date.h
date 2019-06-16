@@ -9,7 +9,7 @@ class Date
 public:
 	Date();
 	~Date();
-}
+};
 
 
 #endif

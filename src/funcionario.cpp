@@ -19,27 +19,21 @@ void listar_funcionarios(){
 
 
 void inserir_funcionario(){
-	string *funcao = new string;
-	if(funcao){
-		while (true){
-			cout << "\nInsira a função do funcionário: " << endl;
-			cin >> *funcao;
-			if (*funcao == "Veterinário"){
-				inserir_veterinario();
-				break;
-			}
-			else if (*funcao == "Tratador"){
-				inserir_tratador();
-				break;
-			}
-			else{
-				cout << "\nInsira um valor válido: Veterinário ou Tratador" << endl;
-			}
+	string funcao;
+	while (true){
+		cout << "\nInsira a função do funcionário: " << endl;
+		cin >> funcao;
+		if (funcao == "Veterinário"){
+			inserir_veterinario();
+			break;
 		}
-		delete funcao;
-	}
-	else{
-		cerr << "\nMemória insuficiente" << endl;
+		else if (funcao == "Tratador"){
+			inserir_tratador();
+			break;
+		}
+		else{
+			cout << "\nInsira um valor válido: Veterinário ou Tratador" << endl;
+		}
 	}
 }
 
