@@ -31,7 +31,7 @@ int Animal::get_ultimo_id(){
 }
 
 void listar_animais(){
-	cout << "TODO\n";
+	cout << "TODO \n";
 	string conteudo;
 	Animal animal;
 	ifstream f;
