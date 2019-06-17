@@ -21,6 +21,8 @@ public:
 	Funcionario();
 	~Funcionario();
 
+	int get_ultimo_id();
+
 	char get_fator_rh();
 	void set_fator_rh(char _fator_rh);
 

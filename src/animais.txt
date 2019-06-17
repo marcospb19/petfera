@@ -1,1 +1,4 @@
 Id | Classe | Nome_animal | Nome_cientifico | Sexo | Tamanho | Dieta | Veterinario | Tratador | Nome_bastismo
+1 | Mamallia | Leão | Panthera leo | M | 2 | Carne | 0 | 1 | Simba | 
+2 | Mamallia | Leão | Panthera leo | M | 2 | Carne | 0 | 1 | Simba | 
+3 | Mamalia | Leão | PantheraLeo | M | 2 | Carne | 1 | 2 | Simba | 

@@ -1,7 +1,7 @@
 .DEFAULT_GOAL = petfera
 CC = g++
 FLAGS = -Wall -Wextra -Werror -pedantic -std=c++11
-OBJECTS = petfera.o menu.o funcionario.o veterinario.o tratador.o date.o
+OBJECTS = petfera.o menu.o funcionario.o veterinario.o tratador.o date.o animal.o
 
 
 petfera: $(OBJECTS)

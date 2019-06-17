@@ -13,16 +13,35 @@ Veterinario::~Veterinario(){
 
 void inserir_veterinario(){
 	Veterinario vt;
-	vt.set_id(1);
-	vt.set_nome("Daniel Oscar");
-	vt.set_cpf("123.456.789-10");
-	vt.set_idade(30);
-	vt.set_tipo_sanguineo(0);
-	vt.set_fator_rh('+');
-	vt.set_especialidade("Felinos");
-	vt.set_crmv("CRMV-GO 0406");
+	string r1;
+	int r2;
+	char r3;
 
-	std::ofstream f;
+	//cout << "Ultimo id: " << vt.get_ultimo_id() << endl;
+	vt.set_id(vt.get_ultimo_id()+1);
+	cout << "Insira o nome do veterinário\n";
+	cin >> r1;
+	vt.set_nome(r1);
+	cout << "Insira o CPF\n";
+	cin >> r1;
+	vt.set_cpf(r1);
+	cout << "Insira a idade\n";
+	cin >> r2;
+	vt.set_idade(r2);
+	cout << "Insira o tipo sanguineo(como inteiro)\n";
+	cin >> r2;
+	vt.set_tipo_sanguineo(r2);
+	cout << "Insira o fator RH\n";
+	cin >> r3;
+	vt.set_fator_rh(r3);
+	cout << "Insira a especialidade\n";
+	cin >> r1;
+	vt.set_especialidade(r1);
+	cout << "Insira o código CRMV\n";
+	cin >> r1;
+	vt.set_crmv(r1);
+
+	ofstream f;
 	f.open("funcionarios.txt", ios::out | ios::app);
 	if (!f.is_open())
 	{
@@ -31,7 +50,7 @@ void inserir_veterinario(){
 	}
 
 	f << vt.get_id()             << " | "
-	  << "Veterinário"           << " | "
+	  << "V"                     << " | "
 	  << vt.get_nome()           << " | "
 	  << vt.get_cpf()            << " | "
 	  << vt.get_idade()          << " | "
@@ -53,4 +72,14 @@ string Veterinario::get_crmv(){
 }
 void Veterinario::set_crmv(string _crmv){
 	crmv = _crmv;
+}
+
+//Overload do <<
+ostream& operator<< (ostream &o, Veterinario v) {
+o << "Id: " << v.get_id() << " Nome: " << v.get_nome() << " Função: Veterinário "
+  << " CPF: " << v.get_cpf() << " Idade: " << v.get_idade()
+  << " Tipo sanguineo: " << v.get_tipo_sanguineo()
+  << " Fator RH: " << v.get_fator_rh() << " Especialidade: " << v.get_especialidade()
+  << " Codigo CRMV: " << v.get_crmv();
+return o;
 }

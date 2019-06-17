@@ -1,4 +1,12 @@
 Id | Funcao | Nome | CPF | Idade | Tipo_sanguineo | Fator_RH | Especialidade | Codigo_CRMV | Nivel_seguranca
-1 | Veterinário | Daniel Oscar | 123.456.789-10 | 30 | 0 | + | Felinos | CRMV-GO 0406 |  | 
-2 | Tratador | João Alberto | 007.404.200-98 | 45 | 0 | - | Répteis e Aves | | 1 | 
-1 | Veterinário | Daniel Oscar | 123.456.789-10 | 30 | 0 | + | Felinos | CRMV-GO 0406 |  | 
+1 | V | Daniel Oscar | 123.456.789-10 | 30 | 0 | + | Felinos | CRMV-GO 0406 |
+2 | T | João Alberto | 007.404.200-98 | 45 | 0 | - | Répteis e Aves | 1 | 
+3 | V | Daniel Oscar | 123.456.789-10 | 30 | 0 | + | Felinos | CRMV-GO 0406 | 
+4 | V | Daniel Oscar | 123.456.789-10 | 30 | 0 | + | Felinos | CRMV-GO 0406 | 
+5 | T | João Alberto | 007.404.200-98 | 45 | 0 | - | Répteis e Aves | 1 |
+6 | T | João Alberto | 007.404.200-98 | 45 | 0 | - | Répteis e Aves | 1 |
+7 | T | Danilo | 007.404.200-98 | 45 | 0 | - | Répteis e Aves | 1 |
+8 | T | Danilovis | 007.404.200-98 | 45 | 0 | - | Répteis e Aves | 1 |
+9 | V | John | 123.456.789-11 | 56 | 2 | + | Aves | CRMV-GO 0406 | 
+10 | T | Keanu | 987.654.321-01 | 100 | 1 | - | Repteis | 5 |
+11 | V | Danilo | 123.456.789-10 | 12 | 0 | + | Aves | CRMV-GO 0406 | 

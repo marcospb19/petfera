@@ -16,6 +16,8 @@ public:
 
 	string get_crmv();
 	void set_crmv(string _crmv);
+
+	friend ostream& operator<< (ostream &o, Veterinario v);
 };
 
 void inserir_veterinario();

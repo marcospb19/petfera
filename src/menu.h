@@ -5,7 +5,7 @@
 class Menu
 {
 public:
-	bool continuar = true;
+	static bool continuar;
 
 	void rodar_menu();
 

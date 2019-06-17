@@ -12,8 +12,11 @@ class Animal
 protected:
 	char sexo;
 	int id;
+	int vt;
+	int tr;
 	double tamanho;
 
+	string nome;
 	string classe;
 	string nome_cientifico;
 	string dieta;
@@ -25,6 +28,44 @@ protected:
 public:
 	Animal();
 	~Animal();
+
+	int get_ultimo_id();
+
+	char get_sexo();
+	void set_sexo(char _sexo);
+
+	int get_id();
+	void set_id(int _id);
+
+	int get_vt();
+	void set_vt(int _vt);
+
+	int get_tr();
+	void set_tr(int _tr);
+
+	double get_tamanho();
+	void set_tamanho(double _tamanho);
+
+	string get_nome();
+	void set_nome(string _nome);
+
+	string get_classe();
+	void set_classe(string _classe);
+
+	string get_nome_cientifico();
+	void set_nome_cientifico(string _nome_cientifico);
+
+	string get_dieta();
+	void set_dieta(string _dieta);
+
+	string get_nome_batismo();
+	void set_nome_batismo(string _nome_batismo);
+
+	Veterinario get_veterinario();
+	void set_veterinario(Veterinario _veterinario);
+
+	Tratador get_tratador();
+	void set_tratador(Tratador _tratador);
 };
 
 
@@ -61,5 +102,8 @@ public:
 	~AnimalExotico();
 };
 
+void inserir_animal();
+
+void listar_animais();
 
 #endif

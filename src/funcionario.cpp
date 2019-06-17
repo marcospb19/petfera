@@ -1,4 +1,6 @@
 #include <iostream>
+#include <fstream>
+#include <cstdlib>
 #include "funcionario.h"
 #include "veterinario.h"
 #include "tratador.h"
@@ -12,8 +14,114 @@ Funcionario::~Funcionario(){
 
 }
 
+int Funcionario::get_ultimo_id(){
+	int id = 0;
+	string conteudo;
+	ifstream f;
+	f.open("funcionarios.txt", ios::in);
+	if (!f.is_open())
+	{
+		cerr << "\nErro na abertura do arquivo\n";
+		return -1;
+	}
+	getline(f, conteudo);
+	while(!f.eof()){
+		f >> id;
+		getline(f, conteudo);
+	}
+	f.close();
+	return id;
+}
+
 void listar_funcionarios(){
-	cout << "TODO\n";
+	cout << "\n";
+	int id;
+	string conteudo, aux, funcao;
+	Veterinario vt;
+	Tratador tr;
+	ifstream f;
+	
+	f.open("funcionarios.txt", ios::in);
+	if (!f.is_open())
+	{
+		cerr << "\nErro na abertura do arquivo\n";
+		return;
+	}
+	//Pulando uma linha
+	getline(f,conteudo);
+	while(!f.eof()){
+		/*//Mostrando só o nome
+		for(int i = 0; i < 4; i++){
+			f >> conteudo;
+		}
+		conteudo = "";
+		f >> aux;
+		while(aux != "|"){
+			conteudo += aux + " ";
+			f >> aux;
+		}
+		cout << conteudo << endl;
+
+		//Pulando o resto da linha
+		getline(f,conteudo);*/
+
+		//Pegando id e função
+		funcao = "";
+		f >> id;
+		f >> conteudo;
+		f >> funcao;
+		f >> conteudo;
+		if(funcao == "V"){
+			vt.set_id(id);
+			conteudo = "";
+			f >> aux;
+			//Pegando nome
+			while(aux != "|"){
+				conteudo += aux + " ";
+				f >> aux;
+			}
+			vt.set_nome(conteudo);
+			f >> conteudo;
+			vt.set_cpf(conteudo);
+			f >> conteudo; f >> conteudo;
+			vt.set_idade(atoi(conteudo.c_str()));
+			f >> conteudo; f >> conteudo;
+			vt.set_tipo_sanguineo(atoi(conteudo.c_str()));
+			f >> conteudo; f >> conteudo;
+			vt.set_fator_rh(conteudo[0]);
+			f >> conteudo; f >> conteudo;
+			vt.set_especialidade(conteudo);
+			f >> conteudo; f >> conteudo;
+			vt.set_crmv(conteudo);
+			cout << vt << endl;
+		}
+		else if(funcao == "T"){
+			tr.set_id(id);
+			conteudo = "";
+			f >> aux;
+			//Pegando nome
+			while(aux != "|"){
+				conteudo += aux + " ";
+				f >> aux;
+			}
+			tr.set_nome(conteudo);
+			f >> conteudo;
+			tr.set_cpf(conteudo);
+			f >> conteudo; f >> conteudo;
+			tr.set_idade(atoi(conteudo.c_str()));
+			f >> conteudo; f >> conteudo;
+			tr.set_tipo_sanguineo(atoi(conteudo.c_str()));
+			f >> conteudo; f >> conteudo;
+			tr.set_fator_rh(conteudo[0]);
+			f >> conteudo; f >> conteudo;
+			tr.set_especialidade(conteudo);
+			f >> conteudo; f >> conteudo;
+			tr.set_nivel_de_seguranca(atoi(conteudo.c_str()));
+			cout << tr << endl;
+		}
+		getline(f,conteudo);
+	}
+	f.close();
 }
 
 
@@ -23,7 +131,7 @@ void inserir_funcionario(){
 		cout << "\nInsira a função do funcionário:\n"
 		     << "1 - Veterinário\n"
 		     << "2 - Tratador\n"
-		     << "0 - Sair\n\n\n";
+		     << "0 - Sair\n\n";
 
 		cin >> op;
 
