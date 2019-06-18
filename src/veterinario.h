@@ -22,5 +22,7 @@ public:
 
 void inserir_veterinario();
 
+Veterinario get_veterinario_tabela(int _id);
+
 
 #endif

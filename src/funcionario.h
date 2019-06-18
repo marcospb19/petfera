@@ -49,5 +49,7 @@ void inserir_funcionario();
 
 void listar_funcionarios();
 
+int checar_id_funcionario(int _id, string _funcao);
+
 
 #endif

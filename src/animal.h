@@ -66,6 +66,8 @@ public:
 
 	Tratador get_tratador();
 	void set_tratador(Tratador _tratador);
+
+	friend ostream& operator<< (ostream &o, Animal a);
 };
 
 

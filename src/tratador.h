@@ -21,5 +21,6 @@ public:
 
 void inserir_tratador();
 
+Tratador get_tratador_tabela(int _id);
 
 #endif

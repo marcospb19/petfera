@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <cstdlib>
 #include "tratador.h"
 using namespace std;
 
@@ -9,6 +10,52 @@ Tratador::Tratador(){
 }
 Tratador::~Tratador(){
 
+}
+
+Tratador get_tratador_tabela(int _id){
+	int id = 0;
+	string conteudo, aux;
+	ifstream f;
+	Tratador tr;
+	f.open("funcionarios.txt", ios::in);
+	if (!f.is_open())
+	{
+		cerr << "\nErro na abertura do arquivo\n";
+		return tr;
+	}
+	getline(f, conteudo);
+	while(!f.eof()){
+		f >> id;
+		if(id == _id){
+			tr.set_id(id);
+			f >> conteudo; f >> conteudo; f >> conteudo;
+			conteudo = "";
+			f >> aux;
+			//Pegando nome
+			while(aux != "|"){
+				conteudo += aux + " ";
+				f >> aux;
+			}
+			tr.set_nome(conteudo);
+			f >> conteudo;
+			tr.set_cpf(conteudo);
+			f >> conteudo; f >> conteudo;
+			tr.set_idade(atoi(conteudo.c_str()));
+			f >> conteudo; f >> conteudo;
+			tr.set_tipo_sanguineo(atoi(conteudo.c_str()));
+			f >> conteudo; f >> conteudo;
+			tr.set_fator_rh(conteudo[0]);
+			f >> conteudo; f >> conteudo;
+			tr.set_especialidade(conteudo);
+			f >> conteudo; f >> conteudo;
+			tr.set_nivel_de_seguranca(atoi(conteudo.c_str()));
+			f.close();
+			return tr;
+		}
+		getline(f, conteudo);
+	}
+	f.close();
+	return tr;
 }
 
 void inserir_tratador(){
@@ -58,7 +105,6 @@ void inserir_tratador(){
 	  << tr.get_tipo_sanguineo() << " | "
 	  << tr.get_fator_rh()       << " | "
 	  << tr.get_especialidade()  << " | "
-// /* <<     */                  << " | " Pular atributo, a discutir
 	  << tr.get_nivel_de_seguranca() << " |\n";
 	f.close();
 }

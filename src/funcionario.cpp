@@ -14,6 +14,32 @@ Funcionario::~Funcionario(){
 
 }
 
+int checar_id_funcionario(int _id, string _funcao){
+	int id = 0;
+	string conteudo, aux, funcao;
+	ifstream f;
+	f.open("funcionarios.txt", ios::in);
+	if (!f.is_open())
+	{
+		cerr << "\nErro na abertura do arquivo\n";
+		return -1;
+	}
+	getline(f, conteudo);
+	while(!f.eof()){
+		funcao = "";
+		f >> id;
+		f >> conteudo;
+		f >> funcao;
+		f >> conteudo;
+		if(id == _id && funcao == _funcao){
+			return 1;
+		}
+		getline(f, conteudo);
+	}
+	f.close();
+	return -1;
+}
+
 int Funcionario::get_ultimo_id(){
 	int id = 0;
 	string conteudo;

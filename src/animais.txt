@@ -1,4 +1,7 @@
 Id | Classe | Nome_animal | Nome_cientifico | Sexo | Tamanho | Dieta | Veterinario | Tratador | Nome_bastismo
-1 | Mamallia | Leão | Panthera leo | M | 2 | Carne | 0 | 1 | Simba | 
-2 | Mamallia | Leão | Panthera leo | M | 2 | Carne | 0 | 1 | Simba | 
+1 | Mamallia | Leão | Panthera leo | M | 2 | Carne | 1 | 2 | Simba | 
+2 | Mamallia | Leão | Panthera leo | M | 2 | Carne | 1 | 2 | Simba | 
 3 | Mamalia | Leão | PantheraLeo | M | 2 | Carne | 1 | 2 | Simba | 
+4 | Mamalia | Tigre | tigrão | F | 1.5 | Carne | 1 | 2 | tigresa | 
+5 | Amphibia | Sapo | sapofilis | M | 0.5 | Moscas | 1 | 2 | SapoEnsaboado | 
+6 | Ave | Pavão | Pavonis | F | 1 | Grãos | 3 | 5 | Pavoa | 

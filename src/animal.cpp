@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <cstdlib>
 #include "animal.h"
 using namespace std;
 
@@ -31,8 +32,8 @@ int Animal::get_ultimo_id(){
 }
 
 void listar_animais(){
-	cout << "TODO \n";
-	string conteudo;
+	cout << "\n";
+	string conteudo, aux;
 	Animal animal;
 	ifstream f;
 
@@ -45,16 +46,39 @@ void listar_animais(){
 	//Pulando uma linha
 	getline(f,conteudo);
 	while(!f.eof()){
-		//Mostrando só o nome
-		for(int i = 0; i < 4; i++){
-			f >> conteudo;
-		}
 		f >> conteudo;
-		cout << conteudo << endl;
+		animal.set_id(atoi(conteudo.c_str()));
+		f >> conteudo; f >> conteudo;
+		animal.set_classe(conteudo);
+		f >> conteudo; f >> conteudo;
+		animal.set_nome(conteudo);
+		f >> conteudo; 
+		conteudo = "";
+		f >> aux;
+		//Pegando nome
+		while(aux != "|"){
+			conteudo += aux + " ";
+			f >> aux;
+		}
+		animal.set_nome_cientifico(conteudo);
+		f >> conteudo;
+		animal.set_sexo(conteudo[0]);
+		f >> conteudo; f >> conteudo;
+		animal.set_tamanho(atof(conteudo.c_str()));
+		f >> conteudo; f >> conteudo;
+		animal.set_dieta(conteudo);
+		f >> conteudo; f >> conteudo;
+		animal.set_vt(atoi(conteudo.c_str()));
+		f >> conteudo; f >> conteudo;
+		animal.set_tr(atoi(conteudo.c_str()));
+		f >> conteudo; f >> conteudo;
+		animal.set_nome_batismo(conteudo);
 
-		//Pulando o resto da linha
+		cout << animal << endl;
+
 		getline(f,conteudo);
 	}
+	f.close();
 }
 
 void inserir_animal(){
@@ -64,7 +88,6 @@ void inserir_animal(){
 	char r3;
 	double r4;
 
-	cout << "Ultimo id: " << animal.get_ultimo_id() << endl;
 	animal.set_id(animal.get_ultimo_id()+1);
 	cout << "Insira a classe do animal\n";
 	cin >> r1;
@@ -84,11 +107,27 @@ void inserir_animal(){
 	cout << "Insira a dieta\n";
 	cin >> r1;
 	animal.set_dieta(r1);
-	cout << "Insira o id do veterinário\n";
-	cin >> r2;
+	while(true){
+		cout << "Insira o id do veterinário\n";
+		cin >> r2;
+		if(checar_id_funcionario(r2, "V") == -1){
+			cout << "Não existe veterinário com esse id\n";
+		}
+		else{
+			break;
+		}
+	}
 	animal.set_vt(r2);
-	cout << "Insira o id do tratador\n";
-	cin >> r2;
+	while(true){
+		cout << "Insira o id do tratador\n";
+		cin >> r2;
+		if(checar_id_funcionario(r2, "T") == -1){
+			cout << "Não existe tratador com esse id\n";
+		}
+		else{
+			break;
+		}
+	}
 	animal.set_tr(r2);
 	cout << "Insira o nome de batismo do animal\n";
 	cin >> r1;
@@ -102,7 +141,7 @@ void inserir_animal(){
 		return;
 	}
 
-	f << animal.get_id()                << " | "
+	f << '\n' << animal.get_id()        << " | "
 	  << animal.get_classe()            << " | "
 	  << animal.get_nome()              << " | "
 	  << animal.get_nome_cientifico()   << " | "
@@ -111,8 +150,8 @@ void inserir_animal(){
 	  << animal.get_dieta()             << " | "
 	  << animal.get_vt()                << " | "
 	  << animal.get_tr()                << " | "
-	  << animal.get_nome_batismo()      << " | "
-	  << '\n';
+	  << animal.get_nome_batismo()      << " | ";
+	  //<< '\n';
 	f.close();
 }
 
@@ -198,4 +237,15 @@ Tratador Animal::get_tratador(){
 }
 void Animal::set_tratador(Tratador _tratador){
 	tratador = _tratador;
+}
+
+ostream& operator<< (ostream &o, Animal a) {
+o << "Id: " << a.get_id() << " Nome: " << a.get_nome()
+  << " Classe: " << a.get_classe() << " Nome científico: " << a.get_nome_cientifico()
+  << " Sexo: " << a.get_sexo() << " Tamanho: " << a.get_tamanho()
+  << " Dieta: " << a.get_dieta() 
+  << " Veterinário: " << get_veterinario_tabela(a.get_vt()).get_nome()
+  << " Tratador: " << get_tratador_tabela(a.get_tr()).get_nome()
+  << " Nome de batismo: " << a.get_nome_batismo();
+return o;
 }
