@@ -89,8 +89,36 @@ void inserir_animal(){
 	double r4;
 
 	animal.set_id(animal.get_ultimo_id()+1);
-	cout << "Insira a classe do animal\n";
-	cin >> r1;
+	while(true){
+		cout << "Insira a classe do animal\n1 - Mamífero 2 - Ave 3 - Reptil 4 - Anfíbio\n";
+		cin >> r2;
+		if (!cin){
+			cout << "Digite um inteiro\n";
+			cin.clear();
+			cin.ignore(256, '\n'); // Entender os argumentos dessa função
+
+		}
+		else if (r2 < 1 || r2 > 4){
+			cout << "Digite um valor válido\n";
+		}
+		else {
+			switch(r2){
+				case 1:
+					r1 = "Mamífero";
+					break;
+				case 2:
+					r1 = "Ave";
+					break;
+				case 3:
+					r1 = "Reptil";
+					break;
+				case 4:
+					r1 = "Anfíbio";
+					break;
+			}
+			break;
+		}
+	}
 	animal.set_classe(r1);
 	cout << "Insira o nome\n";
 	cin >> r1;
@@ -98,11 +126,42 @@ void inserir_animal(){
 	cout << "Insira o nome científico\n";
 	cin >> r1;
 	animal.set_nome_cientifico(r1);
-	cout << "Insira o sexo\n";
-	cin >> r3;
+	while(true){
+		cout << "Insira o sexo\n0 - Feminino 1 - Masculino\n";
+		cin >> r2;
+		if(!cin){
+			cout << "Digite um inteiro\n";
+			cin.clear();
+			cin.ignore(256, '\n');
+		}
+		else if (r2 != 0 && r2 != 1){
+			cout << "Digite um valor válido\n";			
+		}
+		else {
+			switch(r2){
+				case 0:
+					r3 = 'F';
+					break;
+				case 1:
+					r3 = 'M';
+					break;
+			}
+			break;
+		}
+	}
 	animal.set_sexo(r3);
-	cout << "Insira o tamanho\n";
-	cin >> r4;
+	while(true){
+		cout << "Insira o tamanho\n";
+		cin >> r4;
+		if (!cin){
+			cout << "Digite um nº real\n";
+			cin.clear();
+			cin.ignore(256, '\n');
+		}
+		else {
+			break;
+		}
+	}
 	animal.set_tamanho(r4);
 	cout << "Insira a dieta\n";
 	cin >> r1;
@@ -110,7 +169,12 @@ void inserir_animal(){
 	while(true){
 		cout << "Insira o id do veterinário\n";
 		cin >> r2;
-		if(checar_id_funcionario(r2, "V") == -1){
+		if (!cin){
+			cout << "Digite um inteiro\n";
+			cin.clear();
+			cin.ignore(256, '\n'); // Entender os argumentos dessa função
+		}
+		else if(checar_id_funcionario(r2, "V") == -1){
 			cout << "Não existe veterinário com esse id\n";
 		}
 		else{
@@ -121,7 +185,12 @@ void inserir_animal(){
 	while(true){
 		cout << "Insira o id do tratador\n";
 		cin >> r2;
-		if(checar_id_funcionario(r2, "T") == -1){
+		if (!cin){
+			cout << "Digite um inteiro\n";
+			cin.clear();
+			cin.ignore(256, '\n'); // Entender os argumentos dessa função
+		}
+		else if(checar_id_funcionario(r2, "T") == -1){
 			cout << "Não existe tratador com esse id\n";
 		}
 		else{
@@ -241,7 +310,8 @@ void Animal::set_tratador(Tratador _tratador){
 
 ostream& operator<< (ostream &o, Animal a) {
 o << "Id: " << a.get_id() << " Nome: " << a.get_nome()
-  << " Classe: " << a.get_classe() << " Nome científico: " << a.get_nome_cientifico()
+  << " Classe: " << a.get_classe() 
+  << " Nome científico: " << a.get_nome_cientifico()
   << " Sexo: " << a.get_sexo() << " Tamanho: " << a.get_tamanho()
   << " Dieta: " << a.get_dieta() 
   << " Veterinário: " << get_veterinario_tabela(a.get_vt()).get_nome()
