@@ -112,7 +112,7 @@ void listar_funcionarios(){
 			f >> conteudo; f >> conteudo;
 			vt.set_idade(atoi(conteudo.c_str()));
 			f >> conteudo; f >> conteudo;
-			vt.set_tipo_sanguineo(atoi(conteudo.c_str()));
+			vt.set_tipo_sanguineo(conteudo);
 			f >> conteudo; f >> conteudo;
 			vt.set_fator_rh(conteudo[0]);
 			f >> conteudo; f >> conteudo;
@@ -136,7 +136,7 @@ void listar_funcionarios(){
 			f >> conteudo; f >> conteudo;
 			tr.set_idade(atoi(conteudo.c_str()));
 			f >> conteudo; f >> conteudo;
-			tr.set_tipo_sanguineo(atoi(conteudo.c_str()));
+			tr.set_tipo_sanguineo(conteudo);
 			f >> conteudo; f >> conteudo;
 			tr.set_fator_rh(conteudo[0]);
 			f >> conteudo; f >> conteudo;
@@ -157,7 +157,7 @@ void inserir_funcionario(){
 		cout << "\nInsira a função do funcionário:\n"
 		     << "1 - Veterinário\n"
 		     << "2 - Tratador\n"
-		     << "0 - Sair\n\n";
+		     << "0 - Sair\n";
 
 		cin >> op;
 
@@ -170,7 +170,7 @@ void inserir_funcionario(){
 			break;
 		}
 		else{
-			cerr << "\nInsira um valor válido [0-2]\n";
+			cerr << "\nDigite um valor válido [0-2]\n";
 		}
 	}
 }
@@ -186,10 +186,10 @@ void Funcionario::set_fator_rh(char _fator_rh){
 }
 
 // Tipo sanguíneo
-short Funcionario::get_tipo_sanguineo(){
+string Funcionario::get_tipo_sanguineo(){
 	return tipo_sanguineo;
 }
-void Funcionario::set_tipo_sanguineo(short _tipo_sanguineo){
+void Funcionario::set_tipo_sanguineo(string _tipo_sanguineo){
 	tipo_sanguineo = _tipo_sanguineo;
 }
 

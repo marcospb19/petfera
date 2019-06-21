@@ -42,7 +42,7 @@ Veterinario get_veterinario_tabela(int _id){
 			f >> conteudo; f >> conteudo;
 			vt.set_idade(atoi(conteudo.c_str()));
 			f >> conteudo; f >> conteudo;
-			vt.set_tipo_sanguineo(atoi(conteudo.c_str()));
+			vt.set_tipo_sanguineo(conteudo);
 			f >> conteudo; f >> conteudo;
 			vt.set_fator_rh(conteudo[0]);
 			f >> conteudo; f >> conteudo;
@@ -71,14 +71,61 @@ void inserir_veterinario(){
 	cout << "Insira o CPF\n";
 	cin >> r1;
 	vt.set_cpf(r1);
-	cout << "Insira a idade\n";
-	cin >> r2;
+	while(true){
+		cout << "Insira a idade\n";
+		cin >> r2;
+		if (!cin){
+			cout << "Digite um inteiro\n";
+			cin.clear();
+			cin.ignore(256, '\n');
+		}
+		else{
+			break;
+		}
+	}
 	vt.set_idade(r2);
-	cout << "Insira o tipo sanguineo(como inteiro)\n";
-	cin >> r2;
-	vt.set_tipo_sanguineo(r2);
-	cout << "Insira o fator RH\n";
-	cin >> r3;
+	cin.clear();
+	cin.ignore(256, '\n');
+	while(true){
+		cout << "Insira o tipo sanguineo\n1 - A; 2 - B; 3 - AB; 4 - O\n";
+		cin >> r2;
+		if (!cin){
+			cout << "Digite um inteiro\n";
+			cin.clear();
+			cin.ignore(256, '\n');
+		}
+		else if(r2 < 1 || r2 > 4){
+			cout << "Digite um valor válido [1-4]\n";
+		}
+		else{
+			switch(r2){
+				case 01:
+					r1 = "A";
+					break;
+				case 02:
+					r1 = "B";
+					break;
+				case 03:
+					r1 = "AB";
+					break;
+				case 04:
+					r1 = "O";
+					break;
+			}
+			break;
+		}
+	}
+	vt.set_tipo_sanguineo(r1);
+	while(true){
+		cout << "Insira o fator RH\n+ ou -\n";
+		cin >> r3;
+		if(r3 != '+' && r3 != '-'){
+			cout << "Digite um valor válido\n";
+		}
+		else{
+			break;
+		}
+	}
 	vt.set_fator_rh(r3);
 	cout << "Insira a especialidade\n";
 	cin >> r1;

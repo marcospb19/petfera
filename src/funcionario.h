@@ -9,7 +9,7 @@ class Funcionario
 {
 protected:
 	char fator_rh;
-	short tipo_sanguineo;
+	string tipo_sanguineo;
 	short idade;
 	int id;
 
@@ -26,8 +26,8 @@ public:
 	char get_fator_rh();
 	void set_fator_rh(char _fator_rh);
 
-	short get_tipo_sanguineo();
-	void set_tipo_sanguineo(short _tipo_sanguineo);
+	string get_tipo_sanguineo();
+	void set_tipo_sanguineo(string _tipo_sanguineo);
 
 	short get_idade();
 	void set_idade(short _idade);
@@ -50,6 +50,5 @@ void inserir_funcionario();
 void listar_funcionarios();
 
 int checar_id_funcionario(int _id, string _funcao);
-
 
 #endif

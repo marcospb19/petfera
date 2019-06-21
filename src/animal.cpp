@@ -99,7 +99,7 @@ void inserir_animal(){
 
 		}
 		else if (r2 < 1 || r2 > 4){
-			cout << "Digite um valor válido\n";
+			cout << "Digite um valor válido [1-4]\n";
 		}
 		else {
 			switch(r2){
@@ -127,22 +127,22 @@ void inserir_animal(){
 	cin >> r1;
 	animal.set_nome_cientifico(r1);
 	while(true){
-		cout << "Insira o sexo\n0 - Feminino 1 - Masculino\n";
+		cout << "Insira o sexo\n1 - Feminino 2 - Masculino\n";
 		cin >> r2;
 		if(!cin){
 			cout << "Digite um inteiro\n";
 			cin.clear();
 			cin.ignore(256, '\n');
 		}
-		else if (r2 != 0 && r2 != 1){
-			cout << "Digite um valor válido\n";			
+		else if (r2 != 1 && r2 != 2){
+			cout << "Digite um valor válido [1-2]\n";			
 		}
 		else {
 			switch(r2){
-				case 0:
+				case 1:
 					r3 = 'F';
 					break;
-				case 1:
+				case 2:
 					r3 = 'M';
 					break;
 			}

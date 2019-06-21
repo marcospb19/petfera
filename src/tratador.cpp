@@ -42,7 +42,7 @@ Tratador get_tratador_tabela(int _id){
 			f >> conteudo; f >> conteudo;
 			tr.set_idade(atoi(conteudo.c_str()));
 			f >> conteudo; f >> conteudo;
-			tr.set_tipo_sanguineo(atoi(conteudo.c_str()));
+			tr.set_tipo_sanguineo(conteudo);
 			f >> conteudo; f >> conteudo;
 			tr.set_fator_rh(conteudo[0]);
 			f >> conteudo; f >> conteudo;
@@ -72,14 +72,61 @@ void inserir_tratador(){
 	cout << "Insira o CPF\n";
 	cin >> r1;
 	tr.set_cpf(r1);
-	cout << "Insira a idade\n";
-	cin >> r2;
+	while(true){
+		cout << "Insira a idade\n";
+		cin >> r2;
+		if (!cin){
+			cout << "Digite um inteiro\n";
+			cin.clear();
+			cin.ignore(256, '\n');
+		}
+		else{
+			break;
+		}
+	}
 	tr.set_idade(r2);
-	cout << "Insira o tipo sanguineo(como inteiro)\n";
-	cin >> r2;
-	tr.set_tipo_sanguineo(r2);
-	cout << "Insira o fator RH\n";
-	cin >> r3;
+	cin.clear();
+	cin.ignore(256, '\n');
+	while(true){
+		cout << "Insira o tipo sanguineo\n1 - A; 2 - B; 3 - AB; 4 - O\n";
+		cin >> r2;
+		if (!cin){
+			cout << "Digite um inteiro\n";
+			cin.clear();
+			cin.ignore(256, '\n');
+		}
+		else if(r2 < 1 || r2 > 4){
+			cout << "Digite um valor válido [1-4]\n";
+		}
+		else{
+			switch(r2){
+				case 01:
+					r1 = "A";
+					break;
+				case 02:
+					r1 = "B";
+					break;
+				case 03:
+					r1 = "AB";
+					break;
+				case 04:
+					r1 = "O";
+					break;
+			}
+			break;
+		}
+	}
+	tr.set_tipo_sanguineo(r1);
+	while(true){
+		cout << "Insira o fator RH\n+ ou -\n";
+		cin >> r3;
+		if(r3 != '+' && r3 != '-'){
+			cout << "Digite um valor válido\n";
+		}
+		else{
+			break;
+		}
+	}
 	tr.set_fator_rh(r3);
 	cout << "Insira a especialidade\n";
 	cin >> r1;
@@ -87,6 +134,8 @@ void inserir_tratador(){
 	cout << "Insira o nível de segurança\n";
 	cin >> r2;
 	tr.set_nivel_de_seguranca(r2);
+	cin.clear();
+	cin.ignore(256, '\n');
 
 	ofstream f;
 	f.open("funcionarios.txt", ios::out | ios::app);

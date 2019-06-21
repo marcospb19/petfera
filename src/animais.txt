@@ -5,6 +5,3 @@ Id | Classe | Nome_animal | Nome_cientifico | Sexo | Tamanho | Dieta | Veterinar
 4 | Mamalia | Tigre | tigrão | F | 1.5 | Carne | 1 | 2 | tigresa | 
 5 | Amphibia | Sapo | sapofilis | M | 0.5 | Moscas | 1 | 2 | SapoEnsaboado | 
 6 | Ave | Pavão | Pavonis | F | 1 | Grãos | 3 | 5 | Pavoa | 
-7 | Reptil | Cobra | haus | h | 123 | bloco | 1 | 2 | dzfgsdfg | 
-9 | Mamífero | s | sdf | M | 123 | sdf | 1 | 2 | sadfsdf | 
-10 | Mamífero | asd | asd | M | 1 | 1 | 1 | 2 | 1 | 
