@@ -31,7 +31,7 @@ Tratador get_tratador_tabela(int _id){
 			f >> conteudo; f >> conteudo; f >> conteudo;
 			conteudo = "";
 			f >> aux;
-			//Pegando nome
+			// Pegando nome
 			while(aux != "|"){
 				conteudo += aux + " ";
 				f >> aux;
@@ -168,12 +168,12 @@ void Tratador::set_nivel_de_seguranca(int _nivel_de_seguranca){
 	nivel_de_seguranca = _nivel_de_seguranca;
 }
 
-//Overload do <<
+// Overload do <<
 ostream& operator<< (ostream &o, Tratador t) {
-o << "Id: " << t.get_id() << " Nome: " << t.get_nome() << " Função: Tratador "
-  << " CPF: " << t.get_cpf() << " Idade: " << t.get_idade()
-  << " Tipo sanguineo: " << t.get_tipo_sanguineo()
-  << " Fator RH: " << t.get_fator_rh() << " Especialidade: " << t.get_especialidade()
-  << " Nível de segurança: " << t.get_nivel_de_seguranca();
-return o;
+	o << "Id: " << t.get_id() << " Nome: " << t.get_nome() << " Função: Tratador "
+	  << " CPF: " << t.get_cpf() << " Idade: " << t.get_idade()
+	  << " Tipo sanguineo: " << t.get_tipo_sanguineo()
+	  << " Fator RH: " << t.get_fator_rh() << " Especialidade: " << t.get_especialidade()
+	  << " Nível de segurança: " << t.get_nivel_de_seguranca();
+	return o;
 }

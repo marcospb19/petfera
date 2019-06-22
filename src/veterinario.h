@@ -14,10 +14,12 @@ public:
 	Veterinario();
 	~Veterinario();
 
+	friend ostream& operator<< (ostream &o, Veterinario v);
+
+	// Setters e Getters:
+
 	string get_crmv();
 	void set_crmv(string _crmv);
-
-	friend ostream& operator<< (ostream &o, Veterinario v);
 };
 
 void inserir_veterinario();

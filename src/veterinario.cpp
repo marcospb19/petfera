@@ -31,24 +31,29 @@ Veterinario get_veterinario_tabela(int _id){
 			f >> conteudo; f >> conteudo; f >> conteudo;
 			conteudo = "";
 			f >> aux;
-			//Pegando nome
+			// Pegando nome
 			while(aux != "|"){
 				conteudo += aux + " ";
 				f >> aux;
 			}
 			vt.set_nome(conteudo);
+
 			f >> conteudo;
 			vt.set_cpf(conteudo);
+
 			f >> conteudo; f >> conteudo;
 			vt.set_idade(atoi(conteudo.c_str()));
 			f >> conteudo; f >> conteudo;
 			vt.set_tipo_sanguineo(conteudo);
+
 			f >> conteudo; f >> conteudo;
 			vt.set_fator_rh(conteudo[0]);
 			f >> conteudo; f >> conteudo;
 			vt.set_especialidade(conteudo);
+
 			f >> conteudo; f >> conteudo;
 			vt.set_crmv(conteudo);
+
 			f.close();
 			return vt;
 		}
@@ -166,7 +171,7 @@ void Veterinario::set_crmv(string _crmv){
 	crmv = _crmv;
 }
 
-//Overload do <<
+// Overload do <<
 ostream& operator<< (ostream &o, Veterinario v) {
 o << "Id: " << v.get_id() << " Nome: " << v.get_nome() << " Função: Veterinário "
   << " CPF: " << v.get_cpf() << " Idade: " << v.get_idade()

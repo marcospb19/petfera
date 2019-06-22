@@ -4,13 +4,11 @@
 #include "animal.h"
 
 Menu::Menu(){
-
+	this->continuar = true;
 }
 Menu::~Menu(){
 
 }
-
-bool Menu::continuar = true;
 
 void Menu::rodar_menu(){
 	short op = -1;

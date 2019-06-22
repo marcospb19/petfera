@@ -6,7 +6,7 @@ PetFera é um sistema de gerenciamento de pet shops feito para a disciplina de _
 
 > Danilo1 \
 > Gabriel1 \
-> João1 \
+> João Marcos Pereira Bezerra \
 > João2
 
 ## Uso

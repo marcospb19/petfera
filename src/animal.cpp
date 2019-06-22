@@ -9,12 +9,13 @@ Animal::Animal(){
 }
 
 Animal::~Animal(){
-	
+
 }
 
 int Animal::get_ultimo_id(){
 	int id = 0;
 	string conteudo;
+
 	ifstream f;
 	f.open("animais.txt", ios::in);
 	if (!f.is_open())
@@ -22,40 +23,50 @@ int Animal::get_ultimo_id(){
 		cerr << "\nErro na abertura do arquivo\n";
 		return -1;
 	}
+
 	getline(f, conteudo);
 	while(!f.eof()){
 		f >> id;
 		getline(f, conteudo);
 	}
+
 	f.close();
 	return id;
 }
 
 void listar_animais(){
 	cout << "\n";
-	string conteudo, aux;
-	Animal animal;
-	ifstream f;
 
+	ifstream f;
 	f.open("animais.txt", ios::in);
 	if (!f.is_open())
 	{
 		cerr << "\nErro na abertura do arquivo\n";
 		return;
 	}
-	//Pulando uma linha
+
+	string conteudo;
+	string aux;
+
+	Animal animal;
+
+	// Pulando uma linha
 	getline(f,conteudo);
 	while(!f.eof()){
+		// Id
 		f >> conteudo;
 		animal.set_id(atoi(conteudo.c_str()));
+		// Classe
 		f >> conteudo; f >> conteudo;
 		animal.set_classe(conteudo);
+		// Nome
 		f >> conteudo; f >> conteudo;
 		animal.set_nome(conteudo);
-		f >> conteudo; 
+		f >> conteudo;
 		conteudo = "";
 		f >> aux;
-		//Pegando nome
+
+		// Pegando nome separado por mais de um espaço
 		while(aux != "|"){
 			conteudo += aux + " ";
 			f >> aux;
@@ -92,14 +103,14 @@ void inserir_animal(){
 	while(true){
 		cout << "Insira a classe do animal\n1 - Mamífero 2 - Ave 3 - Reptil 4 - Anfíbio\n";
 		cin >> r2;
+
 		if (!cin){
-			cout << "Digite um inteiro\n";
+			cerr << "Digite um inteiro\n";
 			cin.clear();
 			cin.ignore(256, '\n'); // Entender os argumentos dessa função
-
 		}
 		else if (r2 < 1 || r2 > 4){
-			cout << "Digite um valor válido [1-4]\n";
+			cerr << "Digite um valor válido (1-4)\n";
 		}
 		else {
 			switch(r2){
@@ -135,7 +146,7 @@ void inserir_animal(){
 			cin.ignore(256, '\n');
 		}
 		else if (r2 != 1 && r2 != 2){
-			cout << "Digite um valor válido [1-2]\n";			
+			cout << "Digite um valor válido [1-2]\n";
 		}
 		else {
 			switch(r2){
@@ -220,9 +231,36 @@ void inserir_animal(){
 	  << animal.get_vt()                << " | "
 	  << animal.get_tr()                << " | "
 	  << animal.get_nome_batismo()      << " | ";
-	  //<< '\n';
+	//<< '\n';
 	f.close();
 }
+
+ostream& operator<< (ostream &o, Animal a) {
+	o << "Id: " << a.get_id() << " Nome: " << a.get_nome()
+	  << " Classe: " << a.get_classe()
+	  << " Nome científico: " << a.get_nome_cientifico()
+	  << " Sexo: " << a.get_sexo() << " Tamanho: " << a.get_tamanho()
+	  << " Dieta: " << a.get_dieta()
+	  << " Veterinário: " << get_veterinario_tabela(a.get_vt()).get_nome()
+	  << " Tratador: " << get_tratador_tabela(a.get_tr()).get_nome()
+	  << " Nome de batismo: " << a.get_nome_batismo();
+	return o;
+}
+
+// Setters e Getters:
+
+// Sexo
+// Id
+// vt
+// tr
+// Tamanho
+// Nome
+// Classe
+// Nome_cientifico
+// Dieta
+// Nome_batismo
+// Veterinario
+// Tratador
 
 char Animal::get_sexo(){
 	return sexo;
@@ -306,16 +344,4 @@ Tratador Animal::get_tratador(){
 }
 void Animal::set_tratador(Tratador _tratador){
 	tratador = _tratador;
-}
-
-ostream& operator<< (ostream &o, Animal a) {
-o << "Id: " << a.get_id() << " Nome: " << a.get_nome()
-  << " Classe: " << a.get_classe() 
-  << " Nome científico: " << a.get_nome_cientifico()
-  << " Sexo: " << a.get_sexo() << " Tamanho: " << a.get_tamanho()
-  << " Dieta: " << a.get_dieta() 
-  << " Veterinário: " << get_veterinario_tabela(a.get_vt()).get_nome()
-  << " Tratador: " << get_tratador_tabela(a.get_tr()).get_nome()
-  << " Nome de batismo: " << a.get_nome_batismo();
-return o;
 }

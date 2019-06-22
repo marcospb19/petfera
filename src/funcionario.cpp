@@ -16,7 +16,9 @@ Funcionario::~Funcionario(){
 
 int checar_id_funcionario(int _id, string _funcao){
 	int id = 0;
+
 	string conteudo, aux, funcao;
+
 	ifstream f;
 	f.open("funcionarios.txt", ios::in);
 	if (!f.is_open())
@@ -24,7 +26,9 @@ int checar_id_funcionario(int _id, string _funcao){
 		cerr << "\nErro na abertura do arquivo\n";
 		return -1;
 	}
+
 	getline(f, conteudo);
+
 	while(!f.eof()){
 		funcao = "";
 		f >> id;
@@ -42,19 +46,23 @@ int checar_id_funcionario(int _id, string _funcao){
 
 int Funcionario::get_ultimo_id(){
 	int id = 0;
+
 	string conteudo;
 	ifstream f;
 	f.open("funcionarios.txt", ios::in);
+
 	if (!f.is_open())
 	{
 		cerr << "\nErro na abertura do arquivo\n";
 		return -1;
 	}
+
 	getline(f, conteudo);
 	while(!f.eof()){
 		f >> id;
 		getline(f, conteudo);
 	}
+
 	f.close();
 	return id;
 }
@@ -62,36 +70,43 @@ int Funcionario::get_ultimo_id(){
 void listar_funcionarios(){
 	cout << "\n";
 	int id;
+
 	string conteudo, aux, funcao;
+
 	Veterinario vt;
 	Tratador tr;
 	ifstream f;
-	
+
 	f.open("funcionarios.txt", ios::in);
 	if (!f.is_open())
 	{
 		cerr << "\nErro na abertura do arquivo\n";
 		return;
 	}
-	//Pulando uma linha
+	// Pulando uma linha
 	getline(f,conteudo);
 	while(!f.eof()){
-		/*//Mostrando só o nome
+		/*
+
+		// Mostrando só o nome
 		for(int i = 0; i < 4; i++){
 			f >> conteudo;
 		}
 		conteudo = "";
 		f >> aux;
+
 		while(aux != "|"){
 			conteudo += aux + " ";
 			f >> aux;
 		}
 		cout << conteudo << endl;
 
-		//Pulando o resto da linha
-		getline(f,conteudo);*/
+		// Pulando o resto da linha
+		getline(f,conteudo);
 
-		//Pegando id e função
+		*/
+
+		// Pegando id e função
 		funcao = "";
 		f >> id;
 		f >> conteudo;
@@ -101,7 +116,7 @@ void listar_funcionarios(){
 			vt.set_id(id);
 			conteudo = "";
 			f >> aux;
-			//Pegando nome
+			// Pegando nome
 			while(aux != "|"){
 				conteudo += aux + " ";
 				f >> aux;
@@ -125,7 +140,7 @@ void listar_funcionarios(){
 			tr.set_id(id);
 			conteudo = "";
 			f >> aux;
-			//Pegando nome
+			// Pegando nome
 			while(aux != "|"){
 				conteudo += aux + " ";
 				f >> aux;
@@ -178,6 +193,13 @@ void inserir_funcionario(){
 // Setters e Getters:
 
 // Fator_RH
+// Tipo sanguíneo
+// Idade
+// Id
+// Nome
+// Cpf
+// Especialidade
+
 char Funcionario::get_fator_rh(){
 	return fator_rh;
 }
@@ -185,7 +207,6 @@ void Funcionario::set_fator_rh(char _fator_rh){
 	fator_rh = _fator_rh;
 }
 
-// Tipo sanguíneo
 string Funcionario::get_tipo_sanguineo(){
 	return tipo_sanguineo;
 }
@@ -193,7 +214,6 @@ void Funcionario::set_tipo_sanguineo(string _tipo_sanguineo){
 	tipo_sanguineo = _tipo_sanguineo;
 }
 
-// Idade
 short Funcionario::get_idade(){
 	return idade;
 }
@@ -201,7 +221,6 @@ void Funcionario::set_idade(short _idade){
 	idade = _idade;
 }
 
-// Id
 int Funcionario::get_id(){
 	return id;
 }
@@ -209,7 +228,6 @@ void Funcionario::set_id(int _id){
 	id = _id;
 }
 
-// Nome
 string Funcionario::get_nome(){
 	return nome;
 }
@@ -217,7 +235,6 @@ void Funcionario::set_nome(string _nome){
 	nome = _nome;
 }
 
-// Cpf
 string Funcionario::get_cpf(){
 	return cpf;
 }
@@ -225,7 +242,6 @@ void Funcionario::set_cpf(string _cpf){
 	cpf = _cpf;
 }
 
-// Especialidade
 string Funcionario::get_especialidade(){
 	return especialidade;
 }

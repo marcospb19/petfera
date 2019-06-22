@@ -31,6 +31,8 @@ public:
 
 	int get_ultimo_id();
 
+	// Setters e Getters:
+
 	char get_sexo();
 	void set_sexo(char _sexo);
 
