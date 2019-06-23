@@ -1,0 +1,20 @@
+Transformar todas as entradas (possíveis) em numéricas
+
+Comentar quase todo o código
+
+Melhorar formatação de saída
+
+Generalizar caso de entrada para Funcionários na classe Funcionário
+(atualmente Veterinário e Tratador possuem funções com código totalmente
+repetido, a parte em comum deve ser junta na classe Funcionário)
+
+Manter interface consistente (formatação da saída)
+
+Usar nomes mais sugestivos
+
+Fazer exportador (parte 2)
+
+
+Extras opcionais:
+	Disponibilização em tabela
+	Utilização de cores na interface
