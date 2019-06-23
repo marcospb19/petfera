@@ -4,6 +4,7 @@
 #include "funcionario.h"
 #include "veterinario.h"
 #include "tratador.h"
+#include "menu.h"
 using namespace std;
 
 
@@ -176,16 +177,19 @@ void inserir_funcionario(){
 
 		cin >> op;
 
-		if (op == 1){
-			inserir_veterinario();
+		if (checar_entrada_do_menu(op , cin, 0 , 2) == true){
+			switch(op){
+				case 0:
+					cout << "Saindo desse menu\n";
+					break;
+				case 1:
+					inserir_veterinario();
+					break;
+				case 2:
+					inserir_tratador();
+					break;
+			}
 			break;
-		}
-		else if (op == 2){
-			inserir_tratador();
-			break;
-		}
-		else{
-			cerr << "\nDigite um valor válido [0-2]\n";
 		}
 	}
 }

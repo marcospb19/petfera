@@ -1,5 +1,6 @@
 #ifndef MENU_H
 #define MENU_H
+using namespace std;
 
 
 class Menu
@@ -13,5 +14,7 @@ public:
 	~Menu();
 };
 
+bool checar_entrada_do_menu(int entrada, istream& CIN,
+                            int limite_inferior, int limite_superior);
 
 #endif

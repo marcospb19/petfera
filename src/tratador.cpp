@@ -2,6 +2,7 @@
 #include <fstream>
 #include <cstdlib>
 #include "tratador.h"
+#include "menu.h"
 using namespace std;
 
 
@@ -90,15 +91,8 @@ void inserir_tratador(){
 	while(true){
 		cout << "Insira o tipo sanguineo\n1 - A; 2 - B; 3 - AB; 4 - O\n";
 		cin >> r2;
-		if (!cin){
-			cout << "Digite um inteiro\n";
-			cin.clear();
-			cin.ignore(256, '\n');
-		}
-		else if(r2 < 1 || r2 > 4){
-			cout << "Digite um valor válido [1-4]\n";
-		}
-		else{
+
+		if (checar_entrada_do_menu(r2, cin, 1, 4) == true){
 			switch(r2){
 				case 01:
 					r1 = "A";
@@ -118,10 +112,11 @@ void inserir_tratador(){
 	}
 	tr.set_tipo_sanguineo(r1);
 	while(true){
-		cout << "Insira o fator RH\n+ ou -\n";
+		// TODO: TRANSFORMAR ISSO EM ENTRADA NO TECLADO NUMÉRICO
+		cout << "Insira o fator RH\n- ou +\n";
 		cin >> r3;
-		if(r3 != '+' && r3 != '-'){
-			cout << "Digite um valor válido\n";
+		if(r3 != '-' && r3 != '+'){
+			cout << "Digite um valor válido (- ou +)\n";
 		}
 		else{
 			break;

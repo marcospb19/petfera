@@ -2,6 +2,8 @@
 #include "menu.h"
 #include "funcionario.h"
 #include "animal.h"
+using namespace std;
+
 
 Menu::Menu(){
 	this->continuar = true;
@@ -42,4 +44,29 @@ void Menu::rodar_menu(){
 				break;
 		}
 	}
+}
+
+// Retorna true se os valores da entrada passarem e false
+// se os valores forem inválidos e imprime o range correto
+bool checar_entrada_do_menu(int entrada, istream& CIN,
+                            int limite_inferior, int limite_superior)
+{
+	if (!CIN)
+	{
+		cout << "Erro, digite um número inteiro.\n";
+		cin.clear();
+		cin.ignore(256, '\n');
+		return false;
+	}
+
+	if (limite_superior < limite_inferior)
+		swap(limite_inferior, limite_superior);
+
+	if (entrada < limite_inferior || entrada > limite_superior)
+	{
+		cout << "Digite um valor válido ["
+		     << limite_inferior << '-' << limite_superior << "]\n";
+		return false;
+	}
+	return true;
 }

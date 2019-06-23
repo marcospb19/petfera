@@ -17,7 +17,7 @@ protected:
 	double tamanho;
 
 	string nome;
-	string classe;
+	string classe_animal;
 	string nome_cientifico;
 	string dieta;
 	string nome_batismo;
@@ -51,8 +51,8 @@ public:
 	string get_nome();
 	void set_nome(string _nome);
 
-	string get_classe();
-	void set_classe(string _classe);
+	string get_classe_animal();
+	void set_classe_animal(string _classe_animal);
 
 	string get_nome_cientifico();
 	void set_nome_cientifico(string _nome_cientifico);
