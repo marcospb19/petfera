@@ -20,7 +20,7 @@ protected:
 	string classe;
 	string nome_cientifico;
 	string dieta;
-	string nome_batismo;
+	string nome_batismo; /**<Nome batismo do animal (apelido) dado em String*/
 
 	Veterinario veterinario;
 	Tratador tratador;
@@ -43,28 +43,28 @@ public:
 	int get_tr();
 	void set_tr(int _tr); /**<função para adicionar o id do tratador do animal*/
 
-	double get_tamanho();
+	double get_tamanho(); /**<função para pegar o tamanho do animal*/
 	void set_tamanho(double _tamanho); /**<função para adicionar o tamanho do animal*/
 
-	string get_nome();
+	string get_nome(); /**<função para pegar o nome do animal*/
 	void set_nome(string _nome); /**<função para adicionar o nome do animal*/
 
-	string get_classe();
+	string get_classe(); /**<função para pegar a classe do animal (anfibio.mamifero,...)*/
 	void set_classe(string _classe); /**<função para adicionar a classe do animal (anfibio.mamifero,...)*/
 
-	string get_nome_cientifico();
+	string get_nome_cientifico(); /**<função para pegar o nome cientidico do animal*/
 	void set_nome_cientifico(string _nome_cientifico); /**<função para adicionar o nome cientidico do animal*/
 
-	string get_dieta();
+	string get_dieta(); /**<função para pegar a dieta do animal*/
 	void set_dieta(string _dieta); /**<função para adicionar a dieta do animal*/
 
-	string get_nome_batismo();
+	string get_nome_batismo(); /**<função para pegar o nome de batismo do animal (apelido)*/
 	void set_nome_batismo(string _nome_batismo); /**<função para adicionar o nome de batismo do animal (apelido)*/
 
-	Veterinario get_veterinario();
+	Veterinario get_veterinario(); /**<função para pegar o veterinario*/
 	void set_veterinario(Veterinario _veterinario); /**<função para adicionar o veterinario*/
 
-	Tratador get_tratador();
+	Tratador get_tratador(); /**<função para pegar o tratador*/
 	void set_tratador(Tratador _tratador); /**<função para adicionar o tratador*/
 
 	friend ostream& operator<< (ostream &o, Animal a);
@@ -74,34 +74,34 @@ public:
 class AnimalSilvestre
 {
 protected:
-	string autorizacao_ibama;
+	string autorizacao_ibama; /**<Autorização do IBAMA dado em String*/
 
 public:
-	AnimalSilvestre();
-	~AnimalSilvestre();
+	AnimalSilvestre(); /**<Construtor da classe*/
+	~AnimalSilvestre(); /**<Destrutor da classe*/
 };
 
 
-class AnimalNativo : protected AnimalSilvestre
+class AnimalNativo : protected AnimalSilvestre /**<AnimalNativo, uma classe derivada de AnimalSilvestre*/
 {
 protected:
-	string uf_origem; /**<local de origem do animal*/
-	string autorizacao;
+	string uf_origem; /**<local de origem do animal dado em String*/
+	string autorizacao; /**<autorização do animal dado em String*/
 
 public:
-	AnimalNativo(); /**<Construtor*/
-	~AnimalNativo(); /**<Destrutor*/
+	AnimalNativo(); /**<Construtor da classe*/
+	~AnimalNativo(); /**<Destrutor da classe*/
 };
 
 
-class AnimalExotico : protected AnimalSilvestre
+class AnimalExotico : protected AnimalSilvestre /**<AnimalExotico, uma classe derivada de AnimalSilvestre*/
 {
 protected:
-	string pais_origem;
+	string pais_origem; /**<país de origem do animal dado em String*/
 
 public:
-	AnimalExotico(); /**<Construtor*/
-	~AnimalExotico(); /**<Destrutor*/
+	AnimalExotico(); /**<Construtor da classe*/
+	~AnimalExotico(); /**<Destrutor da classe*/
 };
 
 void inserir_animal(); /**<função que insere animal ao programa*/

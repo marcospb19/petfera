@@ -7,8 +7,8 @@ class Date
 	// Atributos pendentes
 
 public:
-	Date();
-	~Date();
+	Date(); /**<Construtor da classe*/
+	~Date(); /**<Destrutor da classe*/
 };
 
 

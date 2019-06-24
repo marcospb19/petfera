@@ -6,31 +6,31 @@
 using namespace std;
 
 
-class Reptil : protected Animal
+class Reptil : protected Animal /**<Reptil, uma classe derivada de Animal*/
 {
 protected:
-	bool venenoso;
-	string tipo_veneno;
+	bool venenoso; /**<Clasifica o Reptil entre venenoso ou nao venenoso*/
+	string tipo_veneno; /**<Tipo do veneno dado em String*/
 
 public:
-	Reptil();
-	~Reptil();
+	Reptil(); /**<Construtor da classe*/
+	~Reptil(); /**<Destrutor da classe*/
 };
 
 
-class ReptilNativo : public Reptil, AnimalNativo
+class ReptilNativo : public Reptil, AnimalNativo /**<ReptilNativo, uma classe derivada de Reptil e AnimalNativo*/
 {
 public:
-	ReptilNativo();
-	~ReptilNativo();
+	ReptilNativo(); /**<Construtor da classe*/
+	~ReptilNativo(); /**<Destrutor da classe*/
 };
 
 
-class ReptilExotico : public Reptil, AnimalExotico
+class ReptilExotico : public Reptil, AnimalExotico /**<ReptilExotico, uma classe derivada de Reptil e AnimalExotico*/
 {
 public:
-	ReptilExotico();
-	~ReptilExotico();
+	ReptilExotico(); /**<Construtor da classe*/
+	~ReptilExotico(); /**<Destrutor da classe*/
 };
 
 
