@@ -5,31 +5,31 @@
 #include "date.h"
 
 
-class Anfibio : protected Animal
+class Anfibio : protected Animal /**<Anfibio, uma classe derivada de Animal*/
 {
 protected:
-	int total_de_mudas;
-	Date ultima_muda;
+	int total_de_mudas; /**<Define numero total de mudas de um anfibio*/
+	Date ultima_muda; /**<Salva a data da ultima muda*/
 
 public:
-	Anfibio();
-	~Anfibio();
+	Anfibio(); /**<Construtor da classe*/
+	~Anfibio(); /**<Destrutor da classe*/
 };
 
 
-class AnfibioNativo : public Anfibio, AnimalNativo
+class AnfibioNativo : public Anfibio, AnimalNativo /**<AnfibioNativo, uma classe derivada de AnimalNativo e Anfibio*/
 {
 public:
-	AnfibioNativo();
-	~AnfibioNativo();
+	AnfibioNativo(); /**<Construtor da classe*/
+	~AnfibioNativo(); /**<Destrutor da classe*/
 };
 
 
-class AnfibioExotico : public Anfibio, AnimalExotico
+class AnfibioExotico : public Anfibio, AnimalExotico /**<AnfibioExotico, uma classe derivada de AnimalExotico e Anfibio*/
 {
 public:
-	AnfibioExotico();
-	~AnfibioExotico();
+	AnfibioExotico(); /**<Construtor da classe*/
+	~AnfibioExotico(); /**<Destrutor da classe*/
 };
 
 
