@@ -100,12 +100,16 @@ int Animal::get_ultimo_id(){
 		return -1;
 	}
 
+	istringstream stream;
+	string line;
+
 	// Recebe o id e ignora o resto da linha
-	while(!f.eof()){
-		// Antes do getline, pois ele pega um espaço vazio ao final
+	while(getline(f, line)){
+		stream.str(line);
+
+		getline(stream, conteudo, '|');
 		id = stoi(conteudo);
-		getline(f, conteudo, '|');
-		f.ignore(1024, '\n');
+		stream.clear();
 	}
 
 	f.close();

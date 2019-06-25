@@ -142,14 +142,14 @@ void inserir_tratador(){
 		return;
 	}
 
-	f << tr.get_id()             << " | "
-	  << "T"                     << " | "
-	  << tr.get_nome()           << " | "
-	  << tr.get_cpf()            << " | "
-	  << tr.get_idade()          << " | "
-	  << tr.get_tipo_sanguineo() << " | "
-	  << tr.get_fator_rh()       << " | "
-	  << tr.get_especialidade()  << " | "
+	f << tr.get_id()                << "|"
+	  << "T"                        << "|"
+	  << tr.get_nome()              << "|"
+	  << tr.get_cpf()               << "|"
+	  << tr.get_idade()             << "|"
+	  << tr.get_tipo_sanguineo()    << "|"
+	  << tr.get_fator_rh()          << "|"
+	  << tr.get_especialidade()     << "|"
 	  << tr.get_nivel_de_seguranca() << " |\n";
 	f.close();
 }
@@ -166,10 +166,10 @@ void Tratador::set_nivel_de_seguranca(int _nivel_de_seguranca){
 
 // Overload do <<
 ostream& operator<< (ostream &o, Tratador t) {
-	o << "Id: " << t.get_id() 
-	  << " Nome: " << t.get_nome() 
+	o << "Id: " << t.get_id()
+	  << " Nome: " << t.get_nome()
 	  << "Função: Tratador " << "\n"
-	  << "CPF: " << t.get_cpf() 
+	  << "CPF: " << t.get_cpf()
 	  << " Idade: " << t.get_idade()
 	  << " Tipo sanguineo: " << t.get_tipo_sanguineo()
 	  << t.get_fator_rh() << "\n"

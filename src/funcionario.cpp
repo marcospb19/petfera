@@ -79,10 +79,14 @@ int Funcionario::get_ultimo_id(){
 		return -1;
 	}
 
-	while(!f.eof()){
-		getline(f, conteudo, '|');
+	istringstream stream;
+	string line;
+
+	while(getline(f, line)){
+		stream.str(line);
+		getline(stream, conteudo, '|');
 		id = stoi(conteudo);
-		f.ignore(1024, '\n');
+		stream.clear();
 	}
 
 	f.close();
@@ -91,102 +95,86 @@ int Funcionario::get_ultimo_id(){
 
 void listar_funcionarios(){
 	cout << "\n";
-	int id;
 
-	string conteudo;
-	string aux;
-	string funcao;
-
-	Veterinario vt;
-	Tratador tr;
 	ifstream f;
-
 	f.open("funcionarios.txt", ios::in);
 	if (!f.is_open())
 	{
 		cerr << "\nErro na abertura do arquivo\n";
 		return;
 	}
-	// Pulando uma linha
-	while(!f.eof()){
-		/*
 
-		// Mostrando só o nome
-		for(int i = 0; i < 4; i++){
-			f >> conteudo;
-		}
-		conteudo = "";
-		f >> aux;
+	int id;
+	string conteudo;
+	string funcao;
 
-		while(aux != "|"){
-			conteudo += aux + " ";
-			f >> aux;
-		}
-		cout << conteudo << endl;
+	Veterinario vt;
+	Tratador tr;
 
-		// Pulando o resto da linha
-		getline(f,conteudo);
+	istringstream stream;
+	string linha;
 
-		*/
+	while(getline(f, linha)){
+		stream.str(linha);
 
-		// Pegando id e função
-		getline(f, conteudo, '|');
-		id = stoi(conteudo);
+		getline(stream, conteudo, '|');
+		id = atoi((conteudo).c_str());
 
-		getline(f, funcao, '|');
+		getline(stream, funcao, '|');
 
 		if(funcao == "V"){
 			vt.set_id(id);
 
-			getline(f, conteudo, '|');
-
-
+			getline(stream, conteudo, '|');
 			vt.set_nome(conteudo);
-			getline(f, conteudo, '|');
 
+			getline(stream, conteudo, '|');
 			vt.set_cpf(conteudo);
-			getline(f, conteudo, '|');
 
+			getline(stream, conteudo, '|');
 			vt.set_idade(atoi(conteudo.c_str()));
-			getline(f, conteudo, '|');
 
+			getline(stream, conteudo, '|');
 			vt.set_tipo_sanguineo(conteudo);
-			getline(f, conteudo, '|');
 
+			getline(stream, conteudo, '|');
 			vt.set_fator_rh(conteudo[0]);
-			getline(f, conteudo, '|');
 
+			getline(stream, conteudo, '|');
 			vt.set_especialidade(conteudo);
-			getline(f, conteudo, '|');
 
+			getline(stream, conteudo, '|');
 			vt.set_crmv(conteudo);
+
 			cout << vt << endl;
 		}
 		else if(funcao == "T"){
 			tr.set_id(id);
-			conteudo = "";
-			f >> aux;
-			// Pegando nome
-			while(aux != "|"){
-				conteudo += aux + " ";
-				f >> aux;
-			}
+
+			getline(stream, conteudo, '|');
 			tr.set_nome(conteudo);
-			f >> conteudo;
+
+			getline(stream, conteudo, '|');
 			tr.set_cpf(conteudo);
-			f >> conteudo; f >> conteudo;
-			tr.set_idade(atoi(conteudo.c_str()));
-			f >> conteudo; f >> conteudo;
+
+			getline(stream, conteudo, '|');
+			tr.set_idade(stoi(conteudo));
+
+			getline(stream, conteudo, '|');
 			tr.set_tipo_sanguineo(conteudo);
-			f >> conteudo; f >> conteudo;
+
+			getline(stream, conteudo, '|');
 			tr.set_fator_rh(conteudo[0]);
-			f >> conteudo; f >> conteudo;
+
+			getline(stream, conteudo, '|');
 			tr.set_especialidade(conteudo);
-			f >> conteudo; f >> conteudo;
-			tr.set_nivel_de_seguranca(atoi(conteudo.c_str()));
+
+			getline(stream, conteudo, '|');
+			tr.set_nivel_de_seguranca(stoi(conteudo));
+
 			cout << tr << endl;
 		}
-		getline(f,conteudo);
+		stream.clear();
 	}
 	f.close();
 }

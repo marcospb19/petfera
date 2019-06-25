@@ -139,15 +139,15 @@ void inserir_veterinario(){
 		return;
 	}
 
-	f << vt.get_id()             << " | "
-	  << "V"                     << " | "
-	  << vt.get_nome()           << " | "
-	  << vt.get_cpf()            << " | "
-	  << vt.get_idade()          << " | "
-	  << vt.get_tipo_sanguineo() << " | "
-	  << vt.get_fator_rh()       << " | "
-	  << vt.get_especialidade()  << " | "
-	  << vt.get_crmv()           << " | "
+	f << vt.get_id()             << "|"
+	  << "V"                     << "|"
+	  << vt.get_nome()           << "|"
+	  << vt.get_cpf()            << "|"
+	  << vt.get_idade()          << "|"
+	  << vt.get_tipo_sanguineo() << "|"
+	  << vt.get_fator_rh()       << "|"
+	  << vt.get_especialidade()  << "|"
+	  << vt.get_crmv()           << "|"
 	  << '\n';
 
 	f.close();
@@ -165,15 +165,15 @@ void Veterinario::set_crmv(string _crmv){
 
 // Overload do <<
 ostream& operator<< (ostream &o, Veterinario v) {
-o << "Id: " << v.get_id() 
-  << " Nome: " << v.get_nome() 
-  << " Função: Veterinário " << "\n"
-  << "CPF: " << v.get_cpf() 
-  << " Idade: " << v.get_idade()
-  << " Tipo sanguineo: " << v.get_tipo_sanguineo()
-  << v.get_fator_rh() << "\n"
-  << "Especialidade: " << v.get_especialidade()
-  << " Codigo CRMV: " << v.get_crmv()
-  << "\n==========================================================";
-return o;
+	o << "Id: " << v.get_id()
+	  << " Nome: " << v.get_nome()
+	  << " Função: Veterinário " << "\n"
+	  << "CPF: " << v.get_cpf()
+	  << " Idade: " << v.get_idade()
+	  << " Tipo sanguineo: " << v.get_tipo_sanguineo()
+	  << v.get_fator_rh() << "\n"
+	  << "Especialidade: " << v.get_especialidade()
+	  << " Codigo CRMV: " << v.get_crmv()
+	  << "\n==========================================================";
+	return o;
 }
