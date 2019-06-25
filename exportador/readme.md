@@ -21,13 +21,10 @@ Para exportar animais.txt para o \<Nome-Do-Arquivo\>
 
 *Filtra animais pela classe animal.*
 
-Classes disponíveis:
-...
-
 > -v \<veterinario\>
 
 *Filtra animais sob a responsabilidade apenas do veterinário determinado.*
 
-> -t \<tratador\>​
+> -t \<tratador\>
 
 *Filtra animais sob a responsabilidade apenas do tratador determinado.*
