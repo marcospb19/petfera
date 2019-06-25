@@ -11,4 +11,4 @@ petfera: $(OBJECTS)
 	$(CC) $(CFLAGS) -c $^ -o $@
 
 clean:
-	@rm $(OBJECTS) 2> /dev/null
+	@rm $(OBJECTS) 2> /dev/null || exit 0

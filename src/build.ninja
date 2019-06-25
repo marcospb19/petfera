@@ -1,3 +1,4 @@
+# Ninja build system
 cc = g++
 flags = -Wall -Wextra -Werror -pedantic -std=c++11
 
@@ -5,11 +6,18 @@ flags = -Wall -Wextra -Werror -pedantic -std=c++11
 rule link
   command = $cc $flags -o $out $in
 
-build petfera: link petfera.o
+build petfera: link petfera.o menu.o funcionario.o veterinario.o tratador.o date.o animal.o
 
 rule compile
   command = $cc $flags -c $in -o $out
 
-build petfera.o: compile petfera.cpp
+build date.o:        compile date.cpp
+build menu.o:        compile menu.cpp
+build animal.o:      compile animal.cpp
+build petfera.o:     compile petfera.cpp
+build tratador.o:    compile tratador.cpp
+build funcionario.o: compile funcionario.cpp
+build veterinario.o: compile veterinario.cpp
 
 # Para clean use "ninja -t clean"
+# "-t" de "tools", é built-in

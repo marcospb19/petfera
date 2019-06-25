@@ -1,0 +1,20 @@
+# Ninja build system
+cc = g++
+flags = -Wall -Wextra -Werror -pedantic -std=c++11
+
+
+rule link
+  command = $cc $flags -o $out $in
+
+build petfera: link exportar.o arquivo.o parse.o messages.o
+
+rule compile
+  command = $cc $flags -c $in -o $out
+
+build parse.o:    compile parse.cpp
+build arquivo.o:  compile arquivo.cpp
+build exportar.o: compile exportar.cpp
+build messages.o: compile messages.cpp
+
+# Para clean use "ninja -t clean"
+# "-t" de "tools", é built-in
