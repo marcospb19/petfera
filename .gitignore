@@ -1,6 +1,7 @@
 # Programa final compilado
 petfera
 src/petfera
+exportador/src/exportador
 
 # Objetos compilados
 *.o

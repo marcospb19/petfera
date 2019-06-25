@@ -1,0 +1,5 @@
+1|AnfExo|Leão|Panthera leo|M|2|Carne|1|2|Simba
+2|AnfExo|Leão|PantheraLeo|M|2|Carne|1|2|Simba Gentil
+3|AveExo|Tigre|tigrão|F|1.5|Carne|1|2|Tigresa
+4|MamExo|Sapo|sapofilis|M|0.5|Moscas|1|2|Sapo Ensaboado
+5|RepExo|Pavão|Pavonis|F|1|Grãos|3|5|Pavoa
