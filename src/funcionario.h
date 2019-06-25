@@ -51,6 +51,6 @@ void inserir_funcionario(); /**<função que insere funcionario ao programa*/
 
 void listar_funcionarios(); /**<função que lista os funcionarios cadastrados*/
 
-int checar_id_funcionario(int _id, string _funcao);  /**<função que checar o id do funcionario*/
+int checar_id_e_funcao_funcionario(int _id, string _funcao);  /**<função que checar o id do funcionario*/
 
 #endif

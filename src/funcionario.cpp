@@ -8,6 +8,21 @@
 using namespace std;
 
 
+// Formato da tabela de funcionarios (separado por "|")
+
+// Id
+// Função
+// Nome
+// CPF
+// Idade
+// Tipo_sanguíneo
+// Fator_RH
+// Especialidade
+// Código_CRMV
+// Nível_seguranca
+// Obs: Nível_seguranca também possui um "|" ao final
+
+
 Funcionario::Funcionario(){
 
 }
@@ -15,10 +30,11 @@ Funcionario::~Funcionario(){
 
 }
 
-int checar_id_funcionario(int _id, string _funcao){
+int checar_id_e_funcao_funcionario(int _id, string _funcao){
 	int id = 0;
 
-	string conteudo, aux, funcao;
+	string conteudo;
+	string funcao;
 
 	ifstream f;
 	f.open("funcionarios.txt", ios::in);
@@ -72,7 +88,9 @@ void listar_funcionarios(){
 	cout << "\n";
 	int id;
 
-	string conteudo, aux, funcao;
+	string conteudo;
+	string aux;
+	string funcao;
 
 	Veterinario vt;
 	Tratador tr;

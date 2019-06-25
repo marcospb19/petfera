@@ -104,6 +104,8 @@ public:
 	~AnimalExotico(); /**<Destrutor da classe*/
 };
 
+Animal carregar_animal(string linha);
+
 void inserir_animal(); /**<função que insere animal ao programa*/
 
 void listar_animais(); /**<função que lista os animais cadastrados*/
