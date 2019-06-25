@@ -586,6 +586,213 @@ void remover_animal(){
 
 }
 
+void editar_animal(){
+	Animal animal, animal_editado;
+	vector<Animal> animais;
+
+	int id_editar = 0;
+	string conteudo, aux;
+
+	while (true){
+		cout << "Digite o id do animal a ser editado:\n";
+		cin >> id_editar;
+		if(checar_entrada_int(cin)){
+			if (checar_id_animal(id_editar) == -1){
+				cout << "Não existe animal com esse id\n";
+			}
+			else{
+				break;
+			}	
+		}
+	}
+
+	// Variáveis temporárias para receber entrada
+	string r1; // Recebe classe_animal, dieta e nome_batismo
+	int r2;
+	double r3;
+
+	animal_editado.set_id(id_editar);
+	while(true){
+		cout << "Insira a classe do animal\n"
+		     << "1 - Mamífero 2 - Ave 3 - Reptil 4 - Anfíbio\n";
+		cin >> r2;
+
+		if (checar_entrada_do_menu(r2, cin, 1, 4) == true){
+			switch(r2){
+				case 1:
+					r1 = "Mamífero";
+					break;
+				case 2:
+					r1 = "Ave";
+					break;
+				case 3:
+					r1 = "Reptil";
+					break;
+				case 4:
+					r1 = "Anfíbio";
+					break;
+			}
+			break;
+		}
+	}
+	animal_editado.set_classe_animal(r1);
+	cout << "Insira o nome\n";
+	cin >> r1;
+	animal_editado.set_nome(r1);
+	cout << "Insira o nome científico\n";
+	cin >> r1;
+	animal_editado.set_nome_cientifico(r1);
+
+	char sexo = 'X';
+
+	while(true){
+		cout << "Insira o sexo\n1 - Feminino 2 - Masculino\n";
+		cin >> r2;
+
+		if (checar_entrada_do_menu(r2, cin, 1, 2) == true){
+			switch(r2){
+				case 1:
+					sexo = 'F';
+					break;
+				case 2:
+					sexo = 'M';
+					break;
+			}
+			break;
+		}
+	}
+	animal_editado.set_sexo(sexo);
+	while(true){
+		cout << "Insira o tamanho\n";
+		cin >> r3;
+		if (!cin){
+			cout << "Digite um nº real\n";
+			cin.clear();
+			cin.ignore(256, '\n');
+		}
+		else {
+			break;
+		}
+	}
+	animal_editado.set_tamanho(r3);
+	cout << "Insira a dieta\n";
+	cin >> r1;
+	animal_editado.set_dieta(r1);
+	while(true){
+		cout << "Insira o id do veterinário\n";
+		cin >> r2;
+		if (checar_entrada_int(cin)){
+			if(checar_id_funcionario(r2, "V") == -1){
+				cout << "Não existe veterinário com esse id\n";
+			}
+			else{
+				break;
+			}
+		}
+	}
+	animal_editado.set_vt(r2);
+	while(true){
+		cout << "Insira o id do tratador\n";
+		cin >> r2;
+		if (checar_entrada_int(cin)){
+			if(checar_id_funcionario(r2, "T") == -1){
+			cout << "Não existe tratador com esse id\n";
+			}
+			else{
+				break;
+			}
+		}
+	}
+	animal_editado.set_tr(r2);
+	cout << "Insira o nome de batismo do animal\n";
+	cin >> r1;
+	animal_editado.set_nome_batismo(r1);
+
+	ifstream f_read;
+	f_read.open("animais.txt", ios::in);
+	if (!f_read.is_open())
+	{
+		cerr << "\nErro na abertura do arquivo\n";
+		return;
+	}
+
+	getline(f_read, conteudo);
+
+	while(!f_read.eof()){
+		// Id
+		f_read >> conteudo;
+		animal.set_id(atoi(conteudo.c_str()));
+		// Classe
+		f_read >> conteudo; f_read >> conteudo;
+		animal.set_classe_animal(conteudo);
+		// Nome
+		f_read >> conteudo; f_read >> conteudo;
+		animal.set_nome(conteudo);
+		f_read >> conteudo;
+		conteudo = "";
+		f_read >> aux;
+
+		// Pegando nome composto com vários espaços
+		while(aux != "|"){
+			conteudo += aux + " ";
+			f_read >> aux;
+		}
+		animal.set_nome_cientifico(conteudo);
+		f_read >> conteudo;
+		animal.set_sexo(conteudo[0]);
+		f_read >> conteudo; f_read >> conteudo;
+		animal.set_tamanho(atof(conteudo.c_str()));
+		f_read >> conteudo; f_read >> conteudo;
+		animal.set_dieta(conteudo);
+		f_read >> conteudo; f_read >> conteudo;
+		animal.set_vt(atoi(conteudo.c_str()));
+		f_read >> conteudo; f_read >> conteudo;
+		animal.set_tr(atoi(conteudo.c_str()));
+		f_read >> conteudo; f_read >> conteudo;
+		animal.set_nome_batismo(conteudo);
+		animais.push_back(animal);
+
+		getline(f_read,conteudo);
+	}
+	f_read.close();
+
+	for (unsigned int i = 0; i < animais.size(); i++)
+	{
+		if (animais[i].get_id() == id_editar){
+			animais[i] = animal_editado;
+		}
+	}
+
+	ofstream f_write;
+	f_write.open("animais.txt", ios::out);
+
+	if (!f_write.is_open())
+	{
+		cerr << "\nErro na abertura do arquivo\n";
+		return;
+	}
+
+	f_write << "Id | Classe | Nome_animal | Nome_cientifico | Sexo | Tamanho | Dieta | Veterinario | Tratador | Nome_bastismo ";
+	for (unsigned int i = 0; i < animais.size(); i++)
+	{
+
+		f_write << '\n' << animais[i].get_id()        << " | "
+		  << animais[i].get_classe_animal()     << " | "
+		  << animais[i].get_nome()              << " | "
+		  << animais[i].get_nome_cientifico()   << " | "
+		  << animais[i].get_sexo()              << " | "
+		  << animais[i].get_tamanho()           << " | "
+		  << animais[i].get_dieta()             << " | "
+		  << animais[i].get_vt()                << " | "
+		  << animais[i].get_tr()                << " | "
+		  << animais[i].get_nome_batismo()      << " | ";
+	//	  << '\n';
+	}
+
+	f_write.close();
+
+}
+
 // Quando essa extração é utilizada?
 ostream& operator <<(ostream &os, Animal an) {
 	os << "Id: "               << an.get_id()

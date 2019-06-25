@@ -120,4 +120,6 @@ int checar_id_animal(int _id);
 
 void remover_animal();
 
+void editar_animal();
+
 #endif
