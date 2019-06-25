@@ -70,6 +70,7 @@ Animal carregar_animal(string linha)
 
 	// Vt
 	getline(stream, conteudo, '|');
+	cout << conteudo << endl;
 	animal.set_vt(stoi(conteudo));
 
 	// Tr
@@ -101,11 +102,11 @@ int Animal::get_ultimo_id(){
 	}
 
 	istringstream stream;
-	string line;
+	string linha;
 
 	// Recebe o id e ignora o resto da linha
-	while(getline(f, line)){
-		stream.str(line);
+	while(getline(f, linha)){
+		stream.str(linha);
 
 		getline(stream, conteudo, '|');
 		id = stoi(conteudo);
@@ -128,7 +129,6 @@ void listar_animais(){
 	}
 
 	string conteudo;
-	string aux;
 
 	Animal animal;
 

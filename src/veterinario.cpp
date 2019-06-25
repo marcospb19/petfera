@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <sstream>
 #include <cstdlib>
 #include "veterinario.h"
 #include "menu.h"
@@ -16,49 +17,53 @@ Veterinario::~Veterinario(){
 Veterinario get_veterinario_tabela(int _id){
 	int id = 0;
 	string conteudo, aux;
+
 	ifstream f;
 	Veterinario vt;
+
 	f.open("funcionarios.txt", ios::in);
 	if (!f.is_open())
 	{
 		cerr << "\nErro na abertura do arquivo\n";
 		return vt;
 	}
-	getline(f, conteudo);
-	while(!f.eof()){
-		f >> id;
+
+	istringstream stream;
+	string linha;
+
+	// Recebe o id e ignora o resto da linha
+	while(getline(f, linha)){
+		stream.str(linha);
+
+		getline(stream, conteudo, '|');
+		id = stoi(conteudo);
+
 		if(id == _id){
 			vt.set_id(id);
-			f >> conteudo; f >> conteudo; f >> conteudo;
-			conteudo = "";
-			f >> aux;
-			// Pegando nome
-			while(aux != "|"){
-				conteudo += aux + " ";
-				f >> aux;
-			}
+
+			getline(stream, conteudo);
 			vt.set_nome(conteudo);
 
-			f >> conteudo;
+			getline(stream, conteudo);
 			vt.set_cpf(conteudo);
 
-			f >> conteudo; f >> conteudo;
+			getline(stream, conteudo);
 			vt.set_idade(atoi(conteudo.c_str()));
-			f >> conteudo; f >> conteudo;
+			getline(stream, conteudo);
 			vt.set_tipo_sanguineo(conteudo);
 
-			f >> conteudo; f >> conteudo;
+			getline(stream, conteudo);
 			vt.set_fator_rh(conteudo[0]);
-			f >> conteudo; f >> conteudo;
+			getline(stream, conteudo);
 			vt.set_especialidade(conteudo);
 
-			f >> conteudo; f >> conteudo;
+			getline(stream, conteudo);
 			vt.set_crmv(conteudo);
 
+			stream.clear();
 			f.close();
 			return vt;
 		}
-		getline(f, conteudo);
 	}
 	f.close();
 	return vt;

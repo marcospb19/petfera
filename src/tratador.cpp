@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <sstream>
 #include <cstdlib>
 #include "tratador.h"
 #include "menu.h"
@@ -24,36 +25,44 @@ Tratador get_tratador_tabela(int _id){
 		cerr << "\nErro na abertura do arquivo\n";
 		return tr;
 	}
-	getline(f, conteudo);
-	while(!f.eof()){
-		f >> id;
+
+	istringstream stream;
+	string line;
+
+	while(getline(f, line)){
+		stream.str(line);
+
+		getline(stream, conteudo);
+		id = stoi(conteudo);
 		if(id == _id){
 			tr.set_id(id);
-			f >> conteudo; f >> conteudo; f >> conteudo;
-			conteudo = "";
-			f >> aux;
-			// Pegando nome
-			while(aux != "|"){
-				conteudo += aux + " ";
-				f >> aux;
-			}
+			getline(stream, conteudo);
+
 			tr.set_nome(conteudo);
-			f >> conteudo;
+			getline(stream, conteudo);
+
 			tr.set_cpf(conteudo);
-			f >> conteudo; f >> conteudo;
+			getline(stream, conteudo);
+
 			tr.set_idade(atoi(conteudo.c_str()));
-			f >> conteudo; f >> conteudo;
+			getline(stream, conteudo);
+
 			tr.set_tipo_sanguineo(conteudo);
-			f >> conteudo; f >> conteudo;
+			getline(stream, conteudo);
+
 			tr.set_fator_rh(conteudo[0]);
-			f >> conteudo; f >> conteudo;
+			getline(stream, conteudo);
+
 			tr.set_especialidade(conteudo);
-			f >> conteudo; f >> conteudo;
+			getline(stream, conteudo);
+
 			tr.set_nivel_de_seguranca(atoi(conteudo.c_str()));
 			f.close();
+			stream.clear(line);
 			return tr;
 		}
-		getline(f, conteudo);
+		stream.clear(line);
+
 	}
 	f.close();
 	return tr;
