@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <sstream>
 #include <cstdlib>
 #include "funcionario.h"
 #include "veterinario.h"
@@ -30,11 +31,9 @@ Funcionario::~Funcionario(){
 
 }
 
+
 int checar_id_e_funcao_funcionario(int _id, string _funcao){
 	int id = 0;
-
-	string conteudo;
-	string funcao;
 
 	ifstream f;
 	f.open("funcionarios.txt", ios::in);
@@ -44,16 +43,24 @@ int checar_id_e_funcao_funcionario(int _id, string _funcao){
 		return -1;
 	}
 
-	while(!f.eof()){
-		funcao = "";
-		getline(f, conteudo, '|');
+	istringstream stream;
+	string conteudo;
+	string funcao;
+	string linha;
+
+	while(getline(f, linha)){
+		stream.str(linha);
+
+		getline(stream, conteudo, '|');
 		id = stoi(conteudo);
 
-		getline(f, funcao, '|');
+		getline(stream, funcao, '|');
+
 		if(id == _id && funcao == _funcao){
 			return 1;
 		}
-		f.ignore(1024, '\n');
+
+		stream.clear();
 	}
 	f.close();
 	return -1;
