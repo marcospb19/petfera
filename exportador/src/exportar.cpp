@@ -24,15 +24,16 @@ int main(int argc, char *argv[])
 		return 2;
 
 	if (filtrar_linhas(argc, argv, lista_de_animais))
+	{
+		mostrar_ajuda();
 		return 3;
+	}
+	cout << "a " << argc << "\n\n";
+	string caminho_final = parse_caminho_final(argv, argc);
+	cout << "b " << argc << "\n\n";
 
-	// if (escrever_arquivo(lista_de_animais))
-	// {
-	// 	/* code */
-	// }
-
-	for (size_t i = 0; i < lista_de_animais.size(); ++i)
-		cout << lista_de_animais.at(i) << endl;
+	if (escrever_arquivo(lista_de_animais, caminho_final))
+		return 4;
 
 	return 0;
 }

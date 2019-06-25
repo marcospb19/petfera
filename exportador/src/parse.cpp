@@ -125,3 +125,36 @@ int checar_argumentos(int argc, char *argv[])
 
 	return 0;
 }
+
+
+// Dá o nome do arquivo para salvar
+// Não precisa de argc pois já foi verificado
+string parse_caminho_final(char* argv[], int argc)
+{
+	string argumento;
+	int posicao = 1; // Posição no argv do <Nome_Do_Arquivo>
+
+	//  0         1
+	// ./exportar a
+
+	// Local das possiveis flags na sequencia
+	// 1 , 3 , 5
+	for (int i = 1; i < 6 ; i += 2)
+	{
+		argumento = argv[i];
+		// Se for uma flag, o nome final tá 2 para frente
+		cout << "i = " << i << "if (" <<  argumento.size() <<  " == 2 && " << argumento[0] << " == \'-\')\n";
+		cout << "if (argumento.size() == 2 && argumento[0] == \'-\')\n";
+
+		if (argumento.size() == 2 && argumento[0] == '-')
+			posicao += 2;
+		else
+			break;
+
+	}
+
+	argumento = argv[posicao];
+	cout << argumento << endl;
+	return argumento;
+	return "saida.txt";
+}

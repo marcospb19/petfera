@@ -12,5 +12,7 @@ int filtrar_linhas(int argc, char *argv[], vector<string>& lista_de_animais);
 
 void filtrar_campo(vector<string>& lista_de_animais, char* arg, int coluna);
 
+int escrever_arquivo(vector<string> lista_de_animais, string caminho_final);
+
 
 #endif
