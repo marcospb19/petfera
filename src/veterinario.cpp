@@ -68,11 +68,11 @@ void inserir_veterinario(){
 	Veterinario vt;
 	string r1;
 	int r2;
-	char r3;
+	char RH = 'X';
 
 	vt.set_id(vt.get_ultimo_id()+1);
 	cout << "Insira o nome do veterinário\n";
-	cin >> r1;
+	getline(cin, r1);
 	vt.set_nome(r1);
 	cout << "Insira o CPF\n";
 	cin >> r1;
@@ -80,18 +80,11 @@ void inserir_veterinario(){
 	while(true){
 		cout << "Insira a idade\n";
 		cin >> r2;
-		if (!cin){
-			cout << "Digite um inteiro\n";
-			cin.clear();
-			cin.ignore(256, '\n');
-		}
-		else{
+		if (checar_entrada_int(cin)){
 			break;
 		}
 	}
 	vt.set_idade(r2);
-	cin.clear();
-	cin.ignore(256, '\n');
 	while(true){
 		cout << "Insira o tipo sanguineo\n1 - A; 2 - B; 3 - AB; 4 - O\n";
 		cin >> r2;
@@ -116,17 +109,21 @@ void inserir_veterinario(){
 	}
 	vt.set_tipo_sanguineo(r1);
 	while(true){
-		// TODO: TRANSFORMAR ISSO EM ENTRADA NO TECLADO NUMÉRICO
-		cout << "Insira o fator RH\n- ou +\n";
-		cin >> r3;
-		if(r3 != '-' && r3 != '+'){
-			cout << "Digite um valor válido (- ou +)\n";
-		}
-		else{
+		cout << "Insira o fator RH\n1 - \'-\' 2 - \'+\'\n";
+		cin >> r2;
+		if(checar_entrada_do_menu(r2, cin, 1, 2) == true){
+			switch(r2){
+				case 01:
+					RH = '-';
+					break;
+				case 02:
+					RH = '+';
+					break;
+			}
 			break;
 		}
 	}
-	vt.set_fator_rh(r3);
+	vt.set_fator_rh(RH);
 	cout << "Insira a especialidade\n";
 	cin >> r1;
 	vt.set_especialidade(r1);

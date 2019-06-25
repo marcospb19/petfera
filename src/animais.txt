@@ -5,3 +5,4 @@ Id | Classe | Nome_animal | Nome_cientifico | Sexo | Tamanho | Dieta | Veterinar
 4 | Mamalia | Tigre | tigrão | F | 1.5 | Carne | 1 | 2 | tigresa | 
 5 | Amphibia | Sapo | sapofilis | M | 0.5 | Moscas | 1 | 2 | SapoEnsaboado | 
 6 | Ave | Pavão | Pavonis | F | 1 | Grãos | 3 | 5 | Pavoa | 
+7 | Reptil | Lagarto | Lagartófilis | M | 1.5 | moscas | 3 | 2 | jonatan | 

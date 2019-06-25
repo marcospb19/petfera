@@ -17,7 +17,7 @@ protected:
 	double tamanho;
 
 	string nome;
-	string classe;
+	string classe_animal;
 	string nome_cientifico;
 	string dieta;
 	string nome_batismo; /**<Nome batismo do animal (apelido) dado em String*/
@@ -49,8 +49,8 @@ public:
 	string get_nome(); /**<função para pegar o nome do animal*/
 	void set_nome(string _nome); /**<função para adicionar o nome do animal*/
 
-	string get_classe(); /**<função para pegar a classe do animal (anfibio.mamifero,...)*/
-	void set_classe(string _classe); /**<função para adicionar a classe do animal (anfibio.mamifero,...)*/
+	string get_classe_animal(); /**<função para pegar a classe do animal (anfibio.mamifero,...)*/
+	void set_classe_animal(string _classe); /**<função para adicionar a classe do animal (anfibio.mamifero,...)*/
 
 	string get_nome_cientifico(); /**<função para pegar o nome cientidico do animal*/
 	void set_nome_cientifico(string _nome_cientifico); /**<função para adicionar o nome cientidico do animal*/

@@ -146,19 +146,19 @@ void inserir_animal(){
 		if (checar_entrada_do_menu(r2, cin, 1, 2) == true){
 			switch(r2){
 				case 1:
-					r3 = 'F';
+					sexo = 'F';
 					break;
 				case 2:
-					r3 = 'M';
+					sexo = 'M';
 					break;
 			}
 			break;
 		}
 	}
-	animal.set_sexo(r3);
+	animal.set_sexo(sexo);
 	while(true){
 		cout << "Insira o tamanho\n";
-		cin >> r4;
+		cin >> r3;
 		if (!cin){
 			cout << "Digite um nº real\n";
 			cin.clear();
@@ -168,39 +168,33 @@ void inserir_animal(){
 			break;
 		}
 	}
-	animal.set_tamanho(r4);
+	animal.set_tamanho(r3);
 	cout << "Insira a dieta\n";
 	cin >> r1;
 	animal.set_dieta(r1);
 	while(true){
 		cout << "Insira o id do veterinário\n";
 		cin >> r2;
-		if (!cin){
-			cout << "Digite um inteiro\n";
-			cin.clear();
-			cin.ignore(256, '\n'); // Entender os argumentos dessa função
-		}
-		else if(checar_id_funcionario(r2, "V") == -1){
-			cout << "Não existe veterinário com esse id\n";
-		}
-		else{
-			break;
+		if (checar_entrada_int(cin)){
+			if(checar_id_funcionario(r2, "V") == -1){
+				cout << "Não existe veterinário com esse id\n";
+			}
+			else{
+				break;
+			}
 		}
 	}
 	animal.set_vt(r2);
 	while(true){
 		cout << "Insira o id do tratador\n";
 		cin >> r2;
-		if (!cin){
-			cout << "Digite um inteiro\n";
-			cin.clear();
-			cin.ignore(256, '\n'); // Entender os argumentos dessa função
-		}
-		else if(checar_id_funcionario(r2, "T") == -1){
+		if (checar_entrada_int(cin)){
+			if(checar_id_funcionario(r2, "T") == -1){
 			cout << "Não existe tratador com esse id\n";
-		}
-		else{
-			break;
+			}
+			else{
+				break;
+			}
 		}
 	}
 	animal.set_tr(r2);

@@ -16,5 +16,6 @@ public:
 
 bool checar_entrada_do_menu(int entrada, istream& CIN,
                             int limite_inferior, int limite_superior);
+bool checar_entrada_int(istream& CIN);
 
 #endif

@@ -63,12 +63,11 @@ void inserir_tratador(){
 	Tratador tr;
 	string r1;
 	int r2;
-	char r3;
+	char RH = 'X';
 
-	cout << "Ultimo id: " << tr.get_ultimo_id() << endl;
 	tr.set_id(tr.get_ultimo_id()+1);
 	cout << "Insira o nome do tratador\n";
-	cin >> r1;
+	getline(cin, r1);
 	tr.set_nome(r1);
 	cout << "Insira o CPF\n";
 	cin >> r1;
@@ -76,18 +75,11 @@ void inserir_tratador(){
 	while(true){
 		cout << "Insira a idade\n";
 		cin >> r2;
-		if (!cin){
-			cout << "Digite um inteiro\n";
-			cin.clear();
-			cin.ignore(256, '\n');
-		}
-		else{
+		if (checar_entrada_int(cin)){
 			break;
 		}
 	}
 	tr.set_idade(r2);
-	cin.clear();
-	cin.ignore(256, '\n');
 	while(true){
 		cout << "Insira o tipo sanguineo\n1 - A; 2 - B; 3 - AB; 4 - O\n";
 		cin >> r2;
@@ -112,22 +104,31 @@ void inserir_tratador(){
 	}
 	tr.set_tipo_sanguineo(r1);
 	while(true){
-		// TODO: TRANSFORMAR ISSO EM ENTRADA NO TECLADO NUMÉRICO
-		cout << "Insira o fator RH\n- ou +\n";
-		cin >> r3;
-		if(r3 != '-' && r3 != '+'){
-			cout << "Digite um valor válido (- ou +)\n";
-		}
-		else{
+		cout << "Insira o fator RH\n1 - \'-\' 2 - \'+\'\n";
+		cin >> r2;
+		if(checar_entrada_do_menu(r2, cin, 1, 2) == true){
+			switch(r2){
+				case 01:
+					RH = '-';
+					break;
+				case 02:
+					RH = '+';
+					break;
+			}
 			break;
 		}
 	}
-	tr.set_fator_rh(r3);
+	tr.set_fator_rh(RH);
 	cout << "Insira a especialidade\n";
 	cin >> r1;
 	tr.set_especialidade(r1);
-	cout << "Insira o nível de segurança\n";
-	cin >> r2;
+	while(true){
+		cout << "Insira o nível de segurança\n";
+		cin >> r2;
+		if (checar_entrada_int(cin)){
+			break;
+		}
+	}
 	tr.set_nivel_de_seguranca(r2);
 	cin.clear();
 	cin.ignore(256, '\n');

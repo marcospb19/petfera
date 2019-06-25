@@ -178,6 +178,8 @@ void inserir_funcionario(){
 		cin >> op;
 
 		if (checar_entrada_do_menu(op , cin, 0 , 2) == true){
+			cin.clear();
+			cin.ignore(256, '\n');
 			switch(op){
 				case 0:
 					cout << "Saindo desse menu\n";

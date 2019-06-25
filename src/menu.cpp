@@ -51,11 +51,8 @@ void Menu::rodar_menu(){
 bool checar_entrada_do_menu(int entrada, istream& CIN,
                             int limite_inferior, int limite_superior)
 {
-	if (!CIN)
+	if (!checar_entrada_int(CIN))
 	{
-		cout << "Erro, digite um número inteiro.\n";
-		cin.clear();
-		cin.ignore(256, '\n');
 		return false;
 	}
 
@@ -66,6 +63,17 @@ bool checar_entrada_do_menu(int entrada, istream& CIN,
 	{
 		cout << "Digite um valor válido ["
 		     << limite_inferior << '-' << limite_superior << "]\n";
+		return false;
+	}
+	return true;
+}
+
+bool checar_entrada_int(istream& CIN){
+	if (!CIN)
+	{
+		cout << "Erro, digite um número inteiro.\n";
+		cin.clear();
+		cin.ignore(256, '\n');
 		return false;
 	}
 	return true;
