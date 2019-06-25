@@ -1,8 +1,6 @@
-Id | Classe | Nome_animal | Nome_cientifico | Sexo | Tamanho | Dieta | Veterinario | Tratador | Nome_bastismo
-1 | Mamífero | Leão | Panthera leo | M | 2 | Carne | 1 | 2 | Simba | 
-2 | Mamífero | Leão | Panthera leo | M | 2 | Carne | 11 | 5 | Simba | 
-3 | Mamífero | Leão | PantheraLeo | M | 2 | Carne | 1 | 2 | Simba | 
-4 | Mamífero | Tigre | tigrão | F | 1.5 | Carne | 1 | 2 | tigresa | 
-5 | Anfíbio | Sapo | sapofilis | M | 0.5 | Moscas | 4 | 5 | SapoEnsaboado | 
-6 | Ave | Pavão | Pavonis | F | 1 | Grãos | 3 | 5 | Pavoa | 
-7 | Reptil | Lagarto | Lagartófilis | M | 1.5 | moscas | 3 | 2 | jonatan | 
+Id | Classe | Nome_animal | Nome_cientifico | Sexo | Tamanho | Dieta | Veterinario | Tratador | Nome_bastismo 
+2 | Mamífero | Leão | Panthera leo  | M | 2 | Carne | 11 | 5 | Simba | 
+3 | Mamífero | Leão | PantheraLeo  | M | 2 | Carne | 1 | 2 | Simba | 
+5 | Anfíbio | Sapo | sapofilis  | M | 0.5 | Moscas | 4 | 5 | SapoEnsaboado | 
+6 | Ave | Pavão | Pavonis  | F | 1 | Grãos | 3 | 5 | Pavoa | 
+7 | Reptil | Lagarto | Lagartófilis  | M | 1.5 | moscas | 3 | 2 | jonatan | 

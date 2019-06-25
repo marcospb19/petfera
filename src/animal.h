@@ -116,4 +116,8 @@ void listar_animais_veterinario();
 
 void listar_animais_classe();
 
+int checar_id_animal(int _id);
+
+void remover_animal();
+
 #endif

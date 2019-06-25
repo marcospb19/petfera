@@ -44,6 +44,9 @@ void Menu::rodar_menu(){
 			case 5:
 				listar_animais_filtro();
 				break;
+			case 6:
+				remover_animal();
+				break;
 			default:
 				cout << "Escolha uma opção válida\n";
 				break;
