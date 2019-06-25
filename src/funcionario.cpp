@@ -44,18 +44,16 @@ int checar_id_e_funcao_funcionario(int _id, string _funcao){
 		return -1;
 	}
 
-	getline(f, conteudo);
-
 	while(!f.eof()){
 		funcao = "";
-		f >> id;
-		f >> conteudo;
-		f >> funcao;
-		f >> conteudo;
+		getline(f, conteudo, '|');
+		id = stoi(conteudo);
+
+		getline(f, funcao, '|');
 		if(id == _id && funcao == _funcao){
 			return 1;
 		}
-		getline(f, conteudo);
+		f.ignore(1024, '\n');
 	}
 	f.close();
 	return -1;
@@ -74,10 +72,10 @@ int Funcionario::get_ultimo_id(){
 		return -1;
 	}
 
-	getline(f, conteudo);
 	while(!f.eof()){
-		f >> id;
-		getline(f, conteudo);
+		getline(f, conteudo, '|');
+		id = stoi(conteudo);
+		f.ignore(1024, '\n');
 	}
 
 	f.close();
@@ -103,7 +101,6 @@ void listar_funcionarios(){
 		return;
 	}
 	// Pulando uma linha
-	getline(f,conteudo);
 	while(!f.eof()){
 		/*
 
@@ -126,32 +123,35 @@ void listar_funcionarios(){
 		*/
 
 		// Pegando id e função
-		funcao = "";
-		f >> id;
-		f >> conteudo;
-		f >> funcao;
-		f >> conteudo;
+		getline(f, conteudo, '|');
+		id = stoi(conteudo);
+
+		getline(f, funcao, '|');
+
 		if(funcao == "V"){
 			vt.set_id(id);
-			conteudo = "";
-			f >> aux;
-			// Pegando nome
-			while(aux != "|"){
-				conteudo += aux + " ";
-				f >> aux;
-			}
+
+			getline(f, conteudo, '|');
+
+
 			vt.set_nome(conteudo);
-			f >> conteudo;
+			getline(f, conteudo, '|');
+
 			vt.set_cpf(conteudo);
-			f >> conteudo; f >> conteudo;
+			getline(f, conteudo, '|');
+
 			vt.set_idade(atoi(conteudo.c_str()));
-			f >> conteudo; f >> conteudo;
+			getline(f, conteudo, '|');
+
 			vt.set_tipo_sanguineo(conteudo);
-			f >> conteudo; f >> conteudo;
+			getline(f, conteudo, '|');
+
 			vt.set_fator_rh(conteudo[0]);
-			f >> conteudo; f >> conteudo;
+			getline(f, conteudo, '|');
+
 			vt.set_especialidade(conteudo);
-			f >> conteudo; f >> conteudo;
+			getline(f, conteudo, '|');
+
 			vt.set_crmv(conteudo);
 			cout << vt << endl;
 		}

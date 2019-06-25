@@ -1,10 +1,10 @@
 #include <iostream>
 #include <fstream>
 #include <cstdlib>
+#include <vector>
 #include <sstream>
 #include "animal.h"
 #include "menu.h"
-#include <vector>
 using namespace std;
 
 
@@ -180,7 +180,7 @@ void listar_animais_filtro(){
 	cout << "\n";
 
 	while(true){
-		cout << "Insira o filtro desejado\n1 - Por tratador 2 - Por veterinário 3 - Por classe\n";
+		cout << "Insira o filtro desejado\n1 - Por tratador \n2 - Por veterinário \n3 - Por classe\n";
 		cin >> filtro;
 
 		if (checar_entrada_do_menu(filtro, cin, 1, 3) == true){
