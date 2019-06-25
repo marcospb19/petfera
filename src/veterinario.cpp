@@ -165,10 +165,15 @@ void Veterinario::set_crmv(string _crmv){
 
 // Overload do <<
 ostream& operator<< (ostream &o, Veterinario v) {
-o << "Id: " << v.get_id() << " Nome: " << v.get_nome() << " Função: Veterinário "
-  << " CPF: " << v.get_cpf() << " Idade: " << v.get_idade()
+o << "Id: " << v.get_id() 
+  << " Nome: " << v.get_nome() 
+  << " Função: Veterinário " << "\n"
+  << "CPF: " << v.get_cpf() 
+  << " Idade: " << v.get_idade()
   << " Tipo sanguineo: " << v.get_tipo_sanguineo()
-  << " Fator RH: " << v.get_fator_rh() << " Especialidade: " << v.get_especialidade()
-  << " Codigo CRMV: " << v.get_crmv();
+  << v.get_fator_rh() << "\n"
+  << "Especialidade: " << v.get_especialidade()
+  << " Codigo CRMV: " << v.get_crmv()
+  << "\n==========================================================";
 return o;
 }

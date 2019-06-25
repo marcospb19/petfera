@@ -5,7 +5,7 @@ PetFera é um sistema de gerenciamento de pet shops feito para a disciplina _lin
 ## Contribuidores:
 
 > Anderson Pereira \
-> Danilo1 \
+> Danilo Miranda de Medeiros Galvão \
 > Gabriel1 \
 > João Marcos Pereira Bezerra \
 > João2

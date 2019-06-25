@@ -166,10 +166,15 @@ void Tratador::set_nivel_de_seguranca(int _nivel_de_seguranca){
 
 // Overload do <<
 ostream& operator<< (ostream &o, Tratador t) {
-	o << "Id: " << t.get_id() << " Nome: " << t.get_nome() << " Função: Tratador "
-	  << " CPF: " << t.get_cpf() << " Idade: " << t.get_idade()
+	o << "Id: " << t.get_id() 
+	  << " Nome: " << t.get_nome() 
+	  << "Função: Tratador " << "\n"
+	  << "CPF: " << t.get_cpf() 
+	  << " Idade: " << t.get_idade()
 	  << " Tipo sanguineo: " << t.get_tipo_sanguineo()
-	  << " Fator RH: " << t.get_fator_rh() << " Especialidade: " << t.get_especialidade()
-	  << " Nível de segurança: " << t.get_nivel_de_seguranca();
+	  << t.get_fator_rh() << "\n"
+	  << "Especialidade: " << t.get_especialidade()
+	  << " Nível de segurança: " << t.get_nivel_de_seguranca()
+	  << "\n==========================================================";
 	return o;
 }

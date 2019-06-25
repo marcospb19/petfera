@@ -20,6 +20,8 @@ void Menu::rodar_menu(){
 		     << "2 - Listar funcionários\n"
 		     << "3 - Inserir animal\n"
 		     << "4 - Listar animais\n"
+		     << "5 - Listar animais com filtro\n"
+		     << "6 - Remover animal\n"
 		     << "0 - Sair\n";
 
 		cin >> op;
@@ -38,6 +40,9 @@ void Menu::rodar_menu(){
 				break;
 			case 4:
 				listar_animais();
+				break;
+			case 5:
+				listar_animais_filtro();
 				break;
 			default:
 				cout << "Escolha uma opção válida\n";

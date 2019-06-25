@@ -10,5 +10,5 @@ Id | Funcao | Nome | CPF | Idade | Tipo_sanguineo | Fator_RH | Especialidade | C
 9 | V | John | 123.456.789-11 | 56 | AB | + | Aves | CRMV-GO 0406 | 
 10 | T | Keanu | 987.654.321-01 | 100 | B | - | Repteis | 5 |
 11 | V | Danilo | 123.456.789-10 | 12 | A | + | Aves | CRMV-GO 0406 |
-12 | T | John Mendes | 12345678910 | 19 | O | - | Aves | 10 |
-13 | T | John Marcos | 12345678910 | 18 | B | + | Repteis | 10 |
+12 | T | John Mendes | 123.456.789-10 | 19 | O | - | Aves | 10 |
+13 | T | John Marcos | 123.456.789-10 | 18 | B | + | Repteis | 10 |

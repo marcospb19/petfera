@@ -97,6 +97,240 @@ void listar_animais(){
 	f.close();
 }
 
+void listar_animais_filtro(){
+	int filtro;
+	cout << "\n";
+
+	while(true){
+		cout << "Insira o filtro desejado\n1 - Por tratador 2 - Por veterinário 3 - Por classe\n";
+		cin >> filtro;
+		if (checar_entrada_do_menu(filtro, cin, 1, 3) == true){
+			switch(filtro){
+				case 1:
+					listar_animais_tratador();
+					break;
+				case 2:
+					listar_animais_veterinario();
+					break;
+				case 3:
+					listar_animais_classe();
+					break;
+			}
+			break;
+		}
+	}
+}
+
+void listar_animais_tratador(){
+	int id;
+	while(true){
+		cout << "Insira o id do tratador\n";
+		cin >> id;
+		if (checar_entrada_int(cin)){
+			if(checar_id_funcionario(id, "T") == -1){
+			cout << "Não existe tratador com esse id\n";
+			}
+			else{
+				break;
+			}
+		}
+	}
+	string conteudo, aux;
+	ifstream f;
+	Animal animal;
+	f.open("animais.txt", ios::in);
+	if (!f.is_open())
+	{
+		cerr << "\nErro na abertura do arquivo\n";
+		return;
+	}
+	getline(f, conteudo);
+	while(!f.eof()){
+		// Id
+		f >> conteudo;
+		animal.set_id(atoi(conteudo.c_str()));
+		// Classe
+		f >> conteudo; f >> conteudo;
+		animal.set_classe_animal(conteudo);
+		// Nome
+		f >> conteudo; f >> conteudo;
+		animal.set_nome(conteudo);
+		f >> conteudo;
+		conteudo = "";
+		f >> aux;
+
+		// Pegando nome composto com vários espaços
+		while(aux != "|"){
+			conteudo += aux + " ";
+			f >> aux;
+		}
+		animal.set_nome_cientifico(conteudo);
+		f >> conteudo;
+		animal.set_sexo(conteudo[0]);
+		f >> conteudo; f >> conteudo;
+		animal.set_tamanho(atof(conteudo.c_str()));
+		f >> conteudo; f >> conteudo;
+		animal.set_dieta(conteudo);
+		f >> conteudo; f >> conteudo;
+		animal.set_vt(atoi(conteudo.c_str()));
+		f >> conteudo; f >> conteudo;
+		animal.set_tr(atoi(conteudo.c_str()));
+		if(animal.get_tr() == id){
+			f >> conteudo; f >> conteudo;
+			animal.set_nome_batismo(conteudo);
+
+			cout << animal << endl;
+		}
+
+		getline(f, conteudo);
+	}
+	f.close();
+}
+
+void listar_animais_veterinario(){
+	int id;
+	while(true){
+		cout << "Insira o id do veterinário\n";
+		cin >> id;
+		if (checar_entrada_int(cin)){
+			if(checar_id_funcionario(id, "V") == -1){
+			cout << "Não existe veterinário com esse id\n";
+			}
+			else{
+				break;
+			}
+		}
+	}
+	string conteudo, aux;
+	ifstream f;
+	Animal animal;
+	f.open("animais.txt", ios::in);
+	if (!f.is_open())
+	{
+		cerr << "\nErro na abertura do arquivo\n";
+		return;
+	}
+	getline(f, conteudo);
+	while(!f.eof()){
+		// Id
+		f >> conteudo;
+		animal.set_id(atoi(conteudo.c_str()));
+		// Classe
+		f >> conteudo; f >> conteudo;
+		animal.set_classe_animal(conteudo);
+		// Nome
+		f >> conteudo; f >> conteudo;
+		animal.set_nome(conteudo);
+		f >> conteudo;
+		conteudo = "";
+		f >> aux;
+
+		// Pegando nome composto com vários espaços
+		while(aux != "|"){
+			conteudo += aux + " ";
+			f >> aux;
+		}
+		animal.set_nome_cientifico(conteudo);
+		f >> conteudo;
+		animal.set_sexo(conteudo[0]);
+		f >> conteudo; f >> conteudo;
+		animal.set_tamanho(atof(conteudo.c_str()));
+		f >> conteudo; f >> conteudo;
+		animal.set_dieta(conteudo);
+		f >> conteudo; f >> conteudo;
+		animal.set_vt(atoi(conteudo.c_str()));
+		if(animal.get_vt() == id){
+			f >> conteudo; f >> conteudo;
+			animal.set_tr(atoi(conteudo.c_str()));
+			f >> conteudo; f >> conteudo;
+			animal.set_nome_batismo(conteudo);
+
+			cout << animal << endl;
+		}
+
+		getline(f, conteudo);
+	}
+	f.close();
+}
+
+void listar_animais_classe(){
+	int cl;
+	string classe;
+	while(true){
+		cout << "Insira a classe do animal\n"
+		     << "1 - Mamífero 2 - Ave 3 - Reptil 4 - Anfíbio\n";
+		cin >> cl;
+
+		if (checar_entrada_do_menu(cl, cin, 1, 4) == true){
+			switch(cl){
+				case 1:
+					classe = "Mamífero";
+					break;
+				case 2:
+					classe = "Ave";
+					break;
+				case 3:
+					classe = "Reptil";
+					break;
+				case 4:
+					classe = "Anfíbio";
+					break;
+			}
+			break;
+		}
+	}
+	string conteudo, aux;
+	ifstream f;
+	Animal animal;
+	f.open("animais.txt", ios::in);
+	if (!f.is_open())
+	{
+		cerr << "\nErro na abertura do arquivo\n";
+		return;
+	}
+	getline(f, conteudo);
+	while(!f.eof()){
+		// Id
+		f >> conteudo;
+		animal.set_id(atoi(conteudo.c_str()));
+		// Classe
+		f >> conteudo; f >> conteudo;
+		animal.set_classe_animal(conteudo);
+		if(animal.get_classe_animal() == classe){
+			// Nome
+			f >> conteudo; f >> conteudo;
+			animal.set_nome(conteudo);
+			f >> conteudo;
+			conteudo = "";
+			f >> aux;
+
+			// Pegando nome composto com vários espaços
+			while(aux != "|"){
+				conteudo += aux + " ";
+				f >> aux;
+			}
+			animal.set_nome_cientifico(conteudo);
+			f >> conteudo;
+			animal.set_sexo(conteudo[0]);
+			f >> conteudo; f >> conteudo;
+			animal.set_tamanho(atof(conteudo.c_str()));
+			f >> conteudo; f >> conteudo;
+			animal.set_dieta(conteudo);
+			f >> conteudo; f >> conteudo;
+			animal.set_vt(atoi(conteudo.c_str()));
+			f >> conteudo; f >> conteudo;
+			animal.set_tr(atoi(conteudo.c_str()));
+			f >> conteudo; f >> conteudo;
+			animal.set_nome_batismo(conteudo);
+
+			cout << animal << endl;
+		}
+
+		getline(f, conteudo);
+	}
+	f.close();
+}
+
 void inserir_animal(){
 	Animal animal;
 
@@ -228,14 +462,15 @@ void inserir_animal(){
 ostream& operator <<(ostream &os, Animal an) {
 	os << "Id: "               << an.get_id()
 	   << " Nome: "            << an.get_nome()
-	   << " Classe: "          << an.get_classe_animal()
-	   << " Nome científico: " << an.get_nome_cientifico()
-	   << " Sexo: "            << an.get_sexo()
-	   << " Tamanho: "         << an.get_tamanho()
-	   << " Dieta: "           << an.get_dieta()
-	   << " Veterinário: "     << get_veterinario_tabela(an.get_vt()).get_nome()
-	   << " Tratador: "        << get_tratador_tabela(an.get_tr()).get_nome()
-	   << " Nome de batismo: " << an.get_nome_batismo();
+	   << " Classe: "          << an.get_classe_animal() 
+	   << " Sexo: "            << an.get_sexo() << "\n"
+	   << "Nome científico: " << an.get_nome_cientifico()
+	   << "Dieta: "           << an.get_dieta() << "\n"
+	   << "Veterinário: "     << get_veterinario_tabela(an.get_vt()).get_nome()
+	   << "Tratador: "        << get_tratador_tabela(an.get_tr()).get_nome() << "\n" 
+	   << "Tamanho: "         << an.get_tamanho()
+	   << " Nome de batismo: " << an.get_nome_batismo()
+	   << "\n==========================================================";
 	return os;
 }
 

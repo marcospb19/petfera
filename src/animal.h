@@ -108,4 +108,12 @@ void inserir_animal(); /**<função que insere animal ao programa*/
 
 void listar_animais(); /**<função que lista os animais cadastrados*/
 
+void listar_animais_filtro(); /**<função que lista os animais por filtro*/
+
+void listar_animais_tratador();
+
+void listar_animais_veterinario();
+
+void listar_animais_classe();
+
 #endif
