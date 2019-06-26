@@ -380,9 +380,7 @@ void inserir_animal(){
 }
 
 int checar_id_animal(int _id){
-	int id = 0;
-
-	string conteudo;
+	cout << "\n";
 
 	ifstream f;
 	f.open("animais.txt", ios::in);
@@ -392,16 +390,19 @@ int checar_id_animal(int _id){
 		return -1;
 	}
 
-	getline(f, conteudo);
+	string conteudo;
+	string aux;
 
-	while(!f.eof()){
-		f >> id;
-		if(id == _id){
+	Animal animal;
+
+	while(getline(f, conteudo)){
+		animal = carregar_animal(conteudo);
+		if (animal.get_id() == _id){
 			return 1;
 		}
-		getline(f, conteudo);
 	}
 	f.close();
+
 	return -1;
 }
 
@@ -433,46 +434,11 @@ void remover_animal(){
 		return;
 	}
 
-	getline(f_read, conteudo);
-
-	while(!f_read.eof()){
-		// Id
-		f_read >> conteudo;
-		animal.set_id(atoi(conteudo.c_str()));
-
-		if(r1 != animal.get_id()) {
-			// Classe
-			f_read >> conteudo; f_read >> conteudo;
-			animal.set_classe_animal(conteudo);
-			// Nome
-			f_read >> conteudo; f_read >> conteudo;
-			animal.set_nome(conteudo);
-			f_read >> conteudo;
-			conteudo = "";
-			f_read >> aux;
-
-			// Pegando nome composto com vários espaços
-			while(aux != "|"){
-				conteudo += aux + " ";
-				f_read >> aux;
-			}
-			animal.set_nome_cientifico(conteudo);
-			f_read >> conteudo;
-			animal.set_sexo(conteudo[0]);
-			f_read >> conteudo; f_read >> conteudo;
-			animal.set_tamanho(atof(conteudo.c_str()));
-			f_read >> conteudo; f_read >> conteudo;
-			animal.set_dieta(conteudo);
-			f_read >> conteudo; f_read >> conteudo;
-			animal.set_vt(atoi(conteudo.c_str()));
-			f_read >> conteudo; f_read >> conteudo;
-			animal.set_tr(atoi(conteudo.c_str()));
-			f_read >> conteudo; f_read >> conteudo;
-			animal.set_nome_batismo(conteudo);
+	while(getline(f_read, conteudo)){
+		animal = carregar_animal(conteudo);
+		if (r1 != animal.get_id()){
 			animais.push_back(animal);
 		}
-
-		getline(f_read,conteudo);
 	}
 	f_read.close();
 
@@ -485,21 +451,19 @@ void remover_animal(){
 		return;
 	}
 
-	f_write << "Id | Classe | Nome_animal | Nome_cientifico | Sexo | Tamanho | Dieta | Veterinario | Tratador | Nome_batismo ";
 	for (unsigned int i = 0; i < animais.size(); i++)
 	{
-
-		f_write << '\n' << animais[i].get_id()        << " | "
-		  << animais[i].get_classe_animal()     << " | "
-		  << animais[i].get_nome()              << " | "
-		  << animais[i].get_nome_cientifico()   << " | "
-		  << animais[i].get_sexo()              << " | "
-		  << animais[i].get_tamanho()           << " | "
-		  << animais[i].get_dieta()             << " | "
-		  << animais[i].get_vt()                << " | "
-		  << animais[i].get_tr()                << " | "
-		  << animais[i].get_nome_batismo()      << " | ";
-	//	  << '\n';
+		f_write << animais[i].get_id()                << "|"
+		        << animais[i].get_classe_animal()     << "|"
+		        << animais[i].get_nome()              << "|"
+		        << animais[i].get_nome_cientifico()   << "|"
+		        << animais[i].get_sexo()              << "|"
+		        << animais[i].get_tamanho()           << "|"
+		        << animais[i].get_dieta()             << "|"
+		        << animais[i].get_tr()                << "|"
+		      	<< animais[i].get_vt()                << "|"
+		        << animais[i].get_nome_batismo()      << "|"
+						<< '\n';
 	}
 
 	f_write.close();
@@ -636,43 +600,9 @@ void editar_animal(){
 		return;
 	}
 
-	getline(f_read, conteudo);
-
-	while(!f_read.eof()){
-		// Id
-		f_read >> conteudo;
-		animal.set_id(atoi(conteudo.c_str()));
-		// Classe
-		f_read >> conteudo; f_read >> conteudo;
-		animal.set_classe_animal(conteudo);
-		// Nome
-		f_read >> conteudo; f_read >> conteudo;
-		animal.set_nome(conteudo);
-		f_read >> conteudo;
-		conteudo = "";
-		f_read >> aux;
-
-		// Pegando nome composto com vários espaços
-		while(aux != "|"){
-			conteudo += aux + " ";
-			f_read >> aux;
-		}
-		animal.set_nome_cientifico(conteudo);
-		f_read >> conteudo;
-		animal.set_sexo(conteudo[0]);
-		f_read >> conteudo; f_read >> conteudo;
-		animal.set_tamanho(atof(conteudo.c_str()));
-		f_read >> conteudo; f_read >> conteudo;
-		animal.set_dieta(conteudo);
-		f_read >> conteudo; f_read >> conteudo;
-		animal.set_vt(atoi(conteudo.c_str()));
-		f_read >> conteudo; f_read >> conteudo;
-		animal.set_tr(atoi(conteudo.c_str()));
-		f_read >> conteudo; f_read >> conteudo;
-		animal.set_nome_batismo(conteudo);
+	while(getline(f_read, conteudo)){
+		animal = carregar_animal(conteudo);
 		animais.push_back(animal);
-
-		getline(f_read,conteudo);
 	}
 	f_read.close();
 
@@ -692,23 +622,21 @@ void editar_animal(){
 		return;
 	}
 
-	f_write << "Id | Classe | Nome_animal | Nome_cientifico | Sexo | Tamanho | Dieta | Veterinario | Tratador | Nome_batismo ";
 	for (unsigned int i = 0; i < animais.size(); i++)
 	{
-
-		f_write << '\n' << animais[i].get_id()        << " | "
-		  << animais[i].get_classe_animal()     << " | "
-		  << animais[i].get_nome()              << " | "
-		  << animais[i].get_nome_cientifico()   << " | "
-		  << animais[i].get_sexo()              << " | "
-		  << animais[i].get_tamanho()           << " | "
-		  << animais[i].get_dieta()             << " | "
-		  << animais[i].get_vt()                << " | "
-		  << animais[i].get_tr()                << " | "
-		  << animais[i].get_nome_batismo()      << " | ";
-	//	  << '\n';
-
+		f_write << animais[i].get_id()                << "|"
+						<< animais[i].get_classe_animal()     << "|"
+						<< animais[i].get_nome()              << "|"
+						<< animais[i].get_nome_cientifico()   << "|"
+						<< animais[i].get_sexo()              << "|"
+						<< animais[i].get_tamanho()           << "|"
+						<< animais[i].get_dieta()             << "|"
+						<< animais[i].get_tr()                << "|"
+						<< animais[i].get_vt()                << "|"
+						<< animais[i].get_nome_batismo()      << "|"
+						<< '\n';
 	}
+
 	f_write.close();
 
 }
