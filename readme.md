@@ -8,7 +8,7 @@ PetFera é um sistema de gerenciamento de pet shops feito para a disciplina _lin
 > Danilo Miranda de Medeiros Galvão \
 > Gabriel Rocha \
 > João Marcos Pereira Bezerra \
-> João Mendes Lopes Neto \
+> João Mendes Lopes Neto
 
 ## Instalação
 
